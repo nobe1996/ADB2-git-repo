@@ -24,7 +24,7 @@
 	}
 
 	function displayDiv(whatToShow){
-		var bodyElements = ["picturelist", "info", "bigpicture"]; //add more if needed
+		var bodyElements = ["picturelist", "info", "bigpicture", "comments"]; //add more if needed
 		for(i = 0; i < bodyElements.length; i++){
 			document.getElementById(bodyElements[i]).style.display = 'none';
 		}
@@ -37,14 +37,14 @@
 <div id ="container">
     <div id = "navdiv">
                     <ul class = "mainlinks">
-                    <li><a id="bigpic" href="#bigpicture" onClick="switchMenu(this.id); displayDiv('bigpicture');">1</a></li>
-                    <li><a id="infoButton" href="#info" onClick="switchMenu(this.id); displayDiv('info');">2</a></li>
-                    <li><a id="pictureListButton" href="#pictureList" onClick="switchMenu(this.id); displayDiv('picturelist');">3</a></li>
+                    <li><a id="bigpic" onClick="switchMenu(this.id); displayDiv('bigpicture');">big picture</a></li>
+                    <li><a id="infoButton" onClick="switchMenu(this.id); displayDiv('info');">list 1</a></li>
+                    <li><a id="pictureListButton" onClick="switchMenu(this.id); displayDiv('picturelist');">list 2</a></li>
+					<li><a id="commentsButton" onClick="switchMenu(this.id); displayDiv('comments');">comments</a></li>
                 </ul>
     </div>
 </div>
 	<div id="content">
-		<ul id="temp"></ul>
 		<ul id= "picturelist" class="picturelist">
 			<li>picture<a href="#"><img src = "images/autumntree.jpg"/></a></li>
 			<li>picture<a href="#"><img src = "images/autumntree.jpg"/></a></li>
@@ -60,7 +60,26 @@
 			<li>picture<a href="#"><img src = "images/greenforest.jpg"/></a></li>
 		</ul>
 		<div id="bigpicture" class="bigpicture">
-			<img src="images/desert.jpg"/>
+			<img src="images/desertBig.jpg"/>
+		</div>
+		<div class="comments" class="comments">
+			<div class="comment">
+				<p class="user">
+					username
+				</p>
+				<p class="commentText">
+					this is a comment
+				</p>
+			</div>
+
+			<div class="comment">
+				<p class="user">
+					username2
+				</p>
+				<p class="commentText">
+					this is another comment
+				</p>
+			</div>
 		</div>
 	</div>
 

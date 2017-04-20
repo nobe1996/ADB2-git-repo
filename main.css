@@ -15,8 +15,9 @@ body{
 }
 
 #container{
-margin: 100px auto 0 auto;
-width:855px;}
+	margin: 10px auto 0 auto;
+	width: 90%;
+}
 
 #navdiv
 {
@@ -72,9 +73,10 @@ width:855px;}
 
 #content
 {
-background-color: #f7f7f7;
-padding:20px 0 20px 20px;
-height:700px;
+	background-color: #f7f7f7;
+	padding:10px 10px 10px 10px;
+	height:700px;
+	
 }
 
 h1,h2,h3,h4{
@@ -85,44 +87,68 @@ h2{font-size:2em;}
 h3{font-size:1.5em;}
 
 .bigpicture{
-	height: 90%;
-	width: 90%;
-	background-color: red;
+	height: 100%;
+	width: 98%%;
+}
+
+.bigpicture img{
+	width: 100%;
+	height: 100%;
 }
 
 .picturelist {
-text-align:left;
-margin-right:auto;
-margin-left:auto;
+	text-align:left;
+	width: 95%;
+	padding: 10px;
 }
 
 .picturelist li {
-list-style:none;
-float:left;
-margin:42px;
-font-weight:bold;
-color:#777777;
+	list-style:none;
+	float:left;
+	margin:40px;
+	font-weight:bold;	
+	color:#777777;
 }
 
 .picturelist img{
-display:block;
-border:2px solid gray;
+	display:block;
+	border:2px solid gray;
 }
 
 .picturelist img:hover{
-border:2px solid #515151;
+	border:2px solid #515151;
 }
 
 .picturelist a{
-color:#777777;
-text-decoration:none;
+	color:#777777;
+	text-decoration:none;
 }
 
 .picturelist a:hover{
-color:#999999;
+	color:#999999;
 }
 
-
-
+.comments{
+	color: white; 
+}
+.comment{
+	padding: 10px;
+	width: 50%;
+	background-color: #999999;
+	border-style: hidden hidden solid hidden;
+}
+.user{
+	background-color: #888888;
+	border-radius: 5px 5px 5px 5px;
+	font-size: 150%;
+}
+.commentText{
+	font-size: 130%;
+}
+.user, .commentText {
+    display: inline-block;
+	height: 100%;
+	padding: 10px;
+}
 
 
