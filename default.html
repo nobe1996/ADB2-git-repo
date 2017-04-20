@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+<link href="main.css" rel="stylesheet" type="text/css" />
+    <title>Test</title>
+
+<script type="text/javascript">
+
+	function switchMenu(elementId){
+		var allElements = document.getElementsByTagName("*");
+			var allIds = [];
+			for (var i = 0, n = allElements.length; i < n; ++i) {
+				var el = allElements[i];
+			if (el.id) {
+				allIds.push(el.id);
+			}
+		}
+		for(i = 0; i < allIds.length; i++){
+			if(document.getElementById(allIds[i]).className.includes("selected")){
+				document.getElementById(allIds[i]).className -= " selected";
+			}
+		}
+		document.getElementById(elementId).className += " selected";
+	}
+
+	function displayDiv(whatToShow){
+		var bodyElements = ["picturelist", "info", "bigpicture"]; //add more if needed
+		for(i = 0; i < bodyElements.length; i++){
+			document.getElementById(bodyElements[i]).style.display = 'none';
+		}
+		document.getElementById(whatToShow).style.display = 'block';
+	}
+</script>
+
+</head>
+<body>
+<div id ="container">
+    <div id = "navdiv">
+                    <ul class = "mainlinks">
+                    <li><a id="bigpic" href="#bigpicture" onClick="switchMenu(this.id); displayDiv('bigpicture');">1</a></li>
+                    <li><a id="infoButton" href="#info" onClick="switchMenu(this.id); displayDiv('info');">2</a></li>
+                    <li><a id="pictureListButton" href="#pictureList" onClick="switchMenu(this.id); displayDiv('picturelist');">3</a></li>
+                </ul>
+    </div>
+</div>
+	<div id="content">
+		<ul id="temp"></ul>
+		<ul id= "picturelist" class="picturelist">
+			<li>picture<a href="#"><img src = "images/autumntree.jpg"/></a></li>
+			<li>picture<a href="#"><img src = "images/autumntree.jpg"/></a></li>
+			<li>picture<a href="#"><img src = "images/autumntree.jpg"/></a></li>
+			<li>pictures<a href="#"><img src = "images/autumntree.jpg"/></a></li>
+			<li>picture<a href="#"><img src = "images/autumntree.jpg"/></a></li>
+			<li>picture<a href="#"><img src = "images/autumntree.jpg"/></a></li>
+			<li>picture<a href="#"><img src = "images/autumntree.jpg"/></a></li>
+		</ul>
+		<ul id= "info" class="picturelist">
+			<li>picture<a href="#"><img id="bigimage" src = "images/greenforest.jpg"/></a></li>
+			<li>picture<a href="#"><img src = "images/greenforest.jpg"/></a></li>
+			<li>picture<a href="#"><img src = "images/greenforest.jpg"/></a></li>
+		</ul>
+		<div id="bigpicture" class="bigpicture">
+			<img src="images/desert.jpg"/>
+		</div>
+	</div>
+
+<script> displayDiv(''); </script>
+</body>
+</html>
