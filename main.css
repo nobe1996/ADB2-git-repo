@@ -142,9 +142,16 @@ h3{font-size:1.5em;}
 	border-radius: 5px 5px 5px 5px;
 	font-size: 150%;
 }
+
+.user:hover{
+	color: #333333;
+	opacity: 0.7;
+}
+
 .commentText{
 	font-size: 130%;
 }
+
 .user, .commentText {
     display: inline-block;
 	height: 100%;
