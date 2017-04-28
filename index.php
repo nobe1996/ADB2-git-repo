@@ -25,7 +25,7 @@ if (!$conn) {
 }
 
 // Prepare the statement
-$stid = oci_parse($conn, 'SELECT * FROM Csoportok');
+$stid = oci_parse($conn, 'SELECT * FROM "Csoportok"');
 if (!$stid) {
     $e = oci_error($conn);
     trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
@@ -74,7 +74,7 @@ oci_free_statement($stid);
 
 */
 echo '<br>';
-$stid = oci_parse($conn, 'SELECT * FROM KATEGORIAK');
+$stid = oci_parse($conn, 'SELECT * FROM "KATEGORIAK"');
 if (!$stid) {
     $e = oci_error($conn);
     trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
