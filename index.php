@@ -15,7 +15,7 @@ $tns = "
     )
   )";
   
-$conn = oci_connect('h669113', 'Norbert1996', $tns,'UTF8') or die();
+$conn = oci_connect('h669113', 'h669113', $tns,'UTF8') or die();
 
 echo '<h2>Az Csoportok tábla adatai: </h2>';
 
