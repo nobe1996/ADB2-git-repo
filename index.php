@@ -1,10 +1,10 @@
 <html>
 <head>
-    <link rel=stylesheet type="text/css" href="main.css" />
+<link href="main.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <?php
-
+/*
 $tns = "
 (DESCRIPTION =
     (ADDRESS_LIST =
@@ -61,7 +61,7 @@ print "</table>\n";
 
 oci_free_statement($stid);
 
-/*
+
 $stid = oci_parse($conn, 'INSERT INTO CSOPORTOK (cs_nev) VALUES(\'Nevtelenek1\')');
 
 $r = oci_execute($stid);  // executes and commits
@@ -72,7 +72,7 @@ if ($r) {
 
 oci_free_statement($stid);
 
-*/
+
 echo '<br>';
 $stid = oci_parse($conn, 'SELECT * FROM KATEGORIAK');
 if (!$stid) {
@@ -113,7 +113,56 @@ oci_free_statement($stid);
 
 
 oci_close($conn);
+*/
+/*
 
+$usr=$_POST["username"];
+$pass=$_POST["password"];
+
+$loggedin = False;
+
+$tns = "
+(DESCRIPTION =
+    (ADDRESS_LIST =
+      (ADDRESS = (PROTOCOL = TCP)(HOST = 127.0.0.1)(PORT = 1521))
+    )
+    (CONNECT_DATA =
+      (SID = kabinet)
+    )
+  )";
+  
+$conn = oci_connect('h669113', 'h669113', $tns,'UTF8') or die();
+if (!$conn) {
+    $e = oci_error();
+    trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+}
+
+$stid = oci_parse($conn, "SELECT count(*) FROM FELHASZNALOK WHERE FELHASZNALONEV LIKE '" . $usr ."' AND JELSZO LIKE '" . $pass ."'");
+
+if (!$stid) {
+    $e = oci_error($conn);
+    trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+}
+
+$r = oci_execute($stid);
+
+if (!$r) {
+    $e = oci_error($stid1);
+    trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+}
+
+while ($row = oci_fetch_array($stid, OCI_ASSOC+OCI_RETURN_NULLS)) {
+	if(count($row) == 1 ){
+		$loggedin = True;
+	}
+}
+oci_free_statement($stid);
+
+oci_close($conn);
+
+*/
+
+include "login.php";
 ?>
 
 

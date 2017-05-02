@@ -2,13 +2,12 @@
 $usr=$_POST["username"];
 $pass=$_POST["password"];
 
-$usrsucc = False;
-$passsucc = False;
+$loggedin = False;
 
 $tns = "
 (DESCRIPTION =
     (ADDRESS_LIST =
-      (ADDRESS = (PROTOCOL = TCP)(HOST = irinyi.cloud)(PORT = 1521))
+      (ADDRESS = (PROTOCOL = TCP)(HOST = 127.0.0.1)(PORT = 1521))
     )
     (CONNECT_DATA =
       (SID = kabinet)
@@ -21,7 +20,7 @@ if (!$conn) {
     trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
 }
 
-$stid = oci_parse($conn, 'SELECT felhasznalonev FROM Felhasznalok WHERE felhasznalonev == "'$usr'"');
+$stid = oci_parse($conn, "SELECT count(*) FROM FELHASZNALOK WHERE FELHASZNALONEV LIKE '" . $usr ."' AND JELSZO LIKE '" . $pass ."'");
 
 if (!$stid) {
     $e = oci_error($conn);
@@ -29,6 +28,7 @@ if (!$stid) {
 }
 
 $r = oci_execute($stid);
+
 if (!$r) {
     $e = oci_error($stid1);
     trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
@@ -36,14 +36,15 @@ if (!$r) {
 
 while ($row = oci_fetch_array($stid, OCI_ASSOC+OCI_RETURN_NULLS)) {
 	if(count($row) == 1 ){
-		$usrsucc = True;
+		$loggedin = True;
 	}
 }
+
+if($loggedin){
+	echo "logged";
 }
 oci_free_statement($stid);
 
-if($usrsucc){
-	Echo "felhasznalonev helyes";
-}
+oci_close($conn);
 
 ?>

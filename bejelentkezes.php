@@ -5,12 +5,14 @@
     <title>Test</title>
 </head>
 <body>
-<div id="login">
-<form action="login.php" method="post">
+<div id="login" class="login">
+<form action="index.php" method="post">
 Username: <input type="text" name="username"><br>
 Password: <input type="text" name="password"><br>
 <input type="submit">
 </form>
+
 </div>
+
 </body>
 </html>
