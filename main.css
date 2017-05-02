@@ -161,4 +161,10 @@ h3{font-size:1.5em;}
 	padding: 10px;
 }
 
-
+.login{
+	text-align: center;
+	background-color: lightblue;
+}
+.login:input{
+	border-radius: 5px 5px 5px 5px;
+}
