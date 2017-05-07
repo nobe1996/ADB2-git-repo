@@ -36,7 +36,7 @@ if (!$r) {
 }
 
 while ($row = oci_fetch_array($stid, OCI_ASSOC+OCI_RETURN_NULLS)) {
-	print_r $row;
+	echo $row['FELHASZNALONEV'];
 	if(count($row) == 1 ){
 		$loggedin = True;
 	}
