@@ -42,6 +42,7 @@ while ($row = oci_fetch_array($stid, OCI_ASSOC+OCI_RETURN_NULLS)) {
 }
 
 if($loggedin){
+	echo "1 row is true";
 	echo "logged";
 }
 oci_free_statement($stid);
