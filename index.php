@@ -166,7 +166,5 @@ oci_close($conn);
 
 include "login.php";
 ?>
-<p>try</p>
-
 </body>
 </html>

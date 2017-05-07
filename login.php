@@ -51,4 +51,8 @@ oci_free_statement($stid);
 
 oci_close($conn);
 
+
+if($_SESSION['login']){
+	echo "Logged in";
+}
 ?>
