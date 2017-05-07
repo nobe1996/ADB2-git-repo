@@ -42,8 +42,8 @@ while ($row = oci_fetch_array($stid, OCI_ASSOC+OCI_RETURN_NULLS)) {
 }
 
 if($loggedin){
-	echo "1 row is true";
-	echo "logged";	
+	$_SESSION['login'] = true;
+	$_SESSION['login_name'] = $usr;
 }
 
 

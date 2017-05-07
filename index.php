@@ -1,10 +1,11 @@
+
 <html>
 <head>
 <link href="main.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <?php
-
+session_start();
 /*
 $tns = "
 (DESCRIPTION =
