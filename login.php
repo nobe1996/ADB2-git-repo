@@ -21,7 +21,7 @@ if (!$conn) {
     trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
 }
 
-$stid = oci_parse($conn, "SELECT count(*) FROM FELHASZNALOK WHERE FELHASZNALONEV LIKE '" . $usr ."' AND JELSZO LIKE '" . $pass ."'");
+$stid = oci_parse($conn, "SELECT * FROM FELHASZNALOK WHERE FELHASZNALONEV LIKE '" . $usr ."' AND JELSZO LIKE '" . $pass ."'");
 
 if (!$stid) {
     $e = oci_error($conn);
