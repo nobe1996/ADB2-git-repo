@@ -4,7 +4,7 @@
 </head>
 <body>
 <?php
-session_start();
+
 /*
 $tns = "
 (DESCRIPTION =
