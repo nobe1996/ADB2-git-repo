@@ -21,7 +21,7 @@ if (!$conn) {
     trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
 }
 
-$stid = oci_parse($conn, "SELECT * FROM FELHASZNALOK WHERE FELHASZNALONEV LIKE '" . $usr ."' AND JELSZO LIKE '" . $pass ."'");
+$stid = oci_parse($conn, "SELECT FELHASZNALONEV, JELSZO FROM FELHASZNALOK WHERE FELHASZNALONEV LIKE '" . $usr ."' AND JELSZO LIKE '" . $pass ."'");
 
 if (!$stid) {
     $e = oci_error($conn);
@@ -47,6 +47,7 @@ if($loggedin){
 }
 $row = oci_fetch_array($stid, OCI_ASSOC+OCI_RETURN_NULLS);
 echo $row;
+
 oci_free_statement($stid);
 
 oci_close($conn);
