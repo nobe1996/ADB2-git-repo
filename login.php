@@ -36,8 +36,7 @@ if (!$r) {
 }
 
 while ($row = oci_fetch_array($stid, OCI_ASSOC+OCI_RETURN_NULLS)) {
-	echo $row['RETURN'];
-	if(count($row) == 1 ){
+	if($row['RETURN'] == 1 ){
 		$loggedin = True;
 	}
 }
