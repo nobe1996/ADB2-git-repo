@@ -21,7 +21,7 @@ if (!$conn) {
     trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
 }
 
-$stid = oci_parse($conn, "SELECT FELHASZNALONEV, JELSZO FROM FELHASZNALOK WHERE FELHASZNALONEV LIKE '" . $usr ."' AND JELSZO LIKE '" . $pass ."'");
+$stid = oci_parse($conn, "SELECT COUNT(*) AS RETURN FROM FELHASZNALOK WHERE FELHASZNALONEV LIKE '" . $usr ."' AND JELSZO LIKE '" . $pass ."'");
 
 if (!$stid) {
     $e = oci_error($conn);
@@ -36,7 +36,7 @@ if (!$r) {
 }
 
 while ($row = oci_fetch_array($stid, OCI_ASSOC+OCI_RETURN_NULLS)) {
-	echo $row['FELHASZNALONEV'];
+	echo $row['RETURN'];
 	if(count($row) == 1 ){
 		$loggedin = True;
 	}
