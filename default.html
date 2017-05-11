@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head>
 <link href="main.css" rel="stylesheet" type="text/css" />
-    <title>Test</title>
+<title>Test</title>
 
 <script type="text/javascript">
 
@@ -24,7 +24,7 @@
 	}
 
 	function displayDiv(whatToShow){
-		var bodyElements = ["picturelist", "info", "bigpicture", "comments"]; //add more if needed
+		var bodyElements = ["picturelist", "userinfo", "bigpicture", "comments"]; //add more if needed
 		for(i = 0; i < bodyElements.length; i++){
 			document.getElementById(bodyElements[i]).style.display = 'none';
 		}
@@ -38,15 +38,16 @@
     <div id = "navdiv">
                     <ul class = "mainlinks">
                     <li><a id="bigpic" onClick="switchMenu(this.id); displayDiv('bigpicture');">big picture</a></li>
-                    <li><a id="infoButton" onClick="switchMenu(this.id); displayDiv('info');">list 1</a></li>
+                    <li><a id="infoButton" onClick="switchMenu(this.id); displayDiv('userinfo');">user</a></li>
                     <li><a id="pictureListButton" onClick="switchMenu(this.id); displayDiv('picturelist');">list 2</a></li>
-					<li><a id="commentsButton" onClick="switchMenu(this.id); displayDiv('comments');">comments</a></li>
                 </ul>
     </div>
 </div>
 	<div id="content">
 		<ul id= "picturelist" class="picturelist">
-			<li>picture<a href="#"><img src = "images/autumntree.jpg"/></a></li>
+			<li>picture<a href="#"><img onclick="switchMenu('bigpic'); displayDiv('bigpicture');" src = "images/autumntree.jpg"/></a></li>
+
+			
 			<li>picture<a href="#"><img src = "images/autumntree.jpg"/></a></li>
 			<li>picture<a href="#"><img src = "images/autumntree.jpg"/></a></li>
 			<li>pictures<a href="#"><img src = "images/autumntree.jpg"/></a></li>
@@ -54,13 +55,34 @@
 			<li>picture<a href="#"><img src = "images/autumntree.jpg"/></a></li>
 			<li>picture<a href="#"><img src = "images/autumntree.jpg"/></a></li>
 		</ul>
-		<ul id= "info" class="picturelist">
-			<li>picture<a href="#"><img id="bigimage" src = "images/greenforest.jpg"/></a></li>
-			<li>picture<a href="#"><img src = "images/greenforest.jpg"/></a></li>
-			<li>picture<a href="#"><img src = "images/greenforest.jpg"/></a></li>
+		<ul id= "userinfo" class="userinfo">
+			<p>Username: asd</p>
+			<p> pictures: 420</p>
+			<p> votes: 69</p>
 		</ul>
 		<div id="bigpicture" class="bigpicture">
 			<img src="images/desertBig.jpg"/>
+
+			<div class="comments">
+				<div class="comment">
+					<p class="user">
+						username
+					</p>
+					<p class="commentText">
+						this is a comment
+					</p>
+				</div>
+
+				<div class="comment">
+					<p class="user">
+						username
+					</p>
+					<p class="commentText">
+						aaaaaaaaaaaaaaaaaaaaaaaaaaaa
+					</p>
+				</div>
+			</div>
+
 		</div>
 		<div id="comments" class="comments">
 			<div class="comment">
@@ -83,7 +105,8 @@
 		</div>
 	</div>
 
-<script> displayDiv(''); </script>
+<script> 
+	displayDiv(''); 
+</script>
 </body>
 </html>
-<!-- git test -->
