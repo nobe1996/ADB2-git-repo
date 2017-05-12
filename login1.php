@@ -4,7 +4,7 @@ if(isset($_POST['send'])){
 	$jelszo = htmlspecialchars($_POST['password']);
 	$username = htmlspecialchars($_POST['username']);
 	
-	$stid = oci_parse($conn, "SELECT FELHASZNALONEV, JELSZO FROM FELHASZNALOK WHERE FELHASZNALONEV LIKE '" . $usr ."'");
+	$stid = oci_parse($conn, "SELECT FELHASZNALONEV, JELSZO FROM FELHASZNALOK WHERE FELHASZNALONEV LIKE '" . $username ."'");
 
 	if (!$stid) {
 		$e = oci_error($conn);
