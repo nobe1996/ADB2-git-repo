@@ -36,8 +36,11 @@ if(isset($_POST['send'])){
 	$_POST = array();
 }
 ?>
+	<?php if ($message != ""){?>
+			<p><?php echo $message;?></p>
+	<?}?>
 <div id="login" class="login">
-	<form method="post" action="indexpage.php">
+	<form method="post" action="login1.php">
 		Username:<input type="text" name="username" value=""><br>
 		Password:<input type="password" name="password" value=""><br>
 		<input type="submit" name="send" value="Bejelentkezés"/>
