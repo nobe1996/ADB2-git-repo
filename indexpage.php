@@ -170,8 +170,11 @@ if($_SESSION['login']){?>
 <?php 
 } 
 else{
-	include("login1.php");
+	echo "login kene";
+	//include("login1.php");
 }
+
+oci_close($conn);
 ?>
 </body>
 </html>
