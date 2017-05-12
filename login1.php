@@ -21,7 +21,7 @@ if(isset($_POST['send'])){
 
 	if ($username != "" && $jelszo != "") {
 		if (oci_num_rows($stid) == 0){
-			$message = "A felhasználó nem létezik!";
+			//$message = "A felhasználó nem létezik!";
 		} else {
 			$row = oci_fetch_assoc($stid);		
 			if ($jelszo != $row['JELSZO']){
@@ -36,19 +36,9 @@ if(isset($_POST['send'])){
 	}
 	$_POST = array();
 }
-
-if ($message != ""){
-	?>
-			<p>
-			<?php
-			echo $message;
-			?>
-			</p>
-	<?php 
-		}
-	?>
+?>
 <div id="login" class="login">
-	<form method="post" action="login1.php">
+	<form method="post" action="indexpage.php">
 		Username:<input type="text" name="username" value=""><br>
 		Password:<input type="password" name="password" value=""><br>
 		<input type="submit" name="send" value="Bejelentkezés"/>
