@@ -30,7 +30,7 @@ if(isset($_POST['send'])){
 				$_SESSION['login'] = true;
 				$_SESSION['login_name'] = $row['FELHASZNALONEV'];
 				$_POST = array();
-				header("Location: ./indexpage.php");
+				header("Location: indexpage.php");
 			}
 		}
 	}
