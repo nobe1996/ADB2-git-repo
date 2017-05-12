@@ -28,10 +28,9 @@ if(isset($_POST['send'])){
 				$message = "A megadott jelszó nem helyes!";
 			} else {
 				$_SESSION['login'] = true;
-				$_SESSION['login_name'] = $row['felhasz'];
-				$_SESSION['id'] = $row['id'];
+				$_SESSION['login_name'] = $row['FELHASZNALONEV'];
 				$_POST = array();
-				header("Location: ./index.php");
+				header("Location: ./indexpage.php");
 			}
 		}
 	}
@@ -42,7 +41,7 @@ if(isset($_POST['send'])){
 	<?php if ($message != ""){?>
 			<p><?php echo $message;?></p>
 	<?}?>
-	<form method="post" action="./indexpage.php">
+	<form method="post" action="indexpage.php">
 		<label>Felhasználónév:</label>
 		<input type="text" name="username" value="" placeholder="Adja meg felhasználónevét..." required/>
 		<label>Jelszó:</label>
