@@ -35,6 +35,7 @@ if(isset($_POST['send'])){
 		}
 	}
 	$_POST = array();
+	$_SESSION['login'] = true;
 }
 ?>
 <div id="login" class="login">
