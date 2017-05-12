@@ -1,3 +1,15 @@
+<?php
+session_start();
+include_once('dbconnect.php');
+if (isset($_GET['logout'])){
+	unset($_SESSION['login']);
+	unset($_SESSION['login-name']);
+}
+if (!isset($_SESSION['login'])){
+	$_SESSION['login'] = false;
+}
+?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head>
@@ -44,21 +56,9 @@
 </script>
 
 </head>
-
-<?php
-session_start();
-include_once('dbconnect.php');
-if (isset($_GET['logout'])){
-	unset($_SESSION['login']);
-	unset($_SESSION['id']);
-}
-if (!isset($_SESSION['login'])){
-	$_SESSION['login'] = false;
-}
-
-
-if($_SESSION['login']){?>
 <body>
+<?php
+if($_SESSION['login']){?>
 
 <div id ="container">
 	
@@ -167,10 +167,10 @@ if($_SESSION['login']){?>
 <script> 
 	displayDiv(''); 
 </script>
-</body>
 <?php } 
 else{
 	include("login1.php");
 }
 ?>
+</body>
 </html>
