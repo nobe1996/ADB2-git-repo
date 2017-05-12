@@ -29,7 +29,7 @@ if(isset($_POST['send'])){
 				$_SESSION['login'] = true;
 				$_SESSION['login_name'] = $row['FELHASZNALONEV'];
 				$_POST = array();
-				header("Location: ./indexpage.php");
+				//header("Location: ./indexpage.php");
 			}
 		}
 	}
@@ -37,9 +37,6 @@ if(isset($_POST['send'])){
 }
 ?>
 <!--<div id="login" class="login">-->
-	<?php if ($message != ""){?>
-			<p><?php echo $message;?></p>
-	<?}?>
 	<form method="post" action="indexpage.php">
 		<input type="text" name="username" value="" placeholder="Adja meg felhasználónevét...">
 		<input type="password" name="password" value="" placeholder="Adja meg jelszavát...">

@@ -171,7 +171,7 @@ if($_SESSION['login']){?>
 } 
 else{
 	echo "login kene";
-	include "login1.php";
+	include_once("login1.php");
 }
 
 oci_close($conn);
