@@ -1,4 +1,5 @@
 <?php
+include_once('dbconnect.php');
 $message = "";
 if(isset($_POST['send'])){
 	$jelszo = htmlspecialchars($_POST['password']);
