@@ -36,11 +36,11 @@ if(isset($_POST['send'])){
 	$_POST = array();
 }
 ?>
-<!--<div id="login" class="login">-->
+<div id="login" class="login">
 	<form method="post" action="indexpage.php">
 		<input type="text" name="username" value="" placeholder="Adja meg felhasználónevét...">
 		<input type="password" name="password" value="" placeholder="Adja meg jelszavát...">
 		<input type="submit" name="send" value="Bejelentkezés"/>
 	</form>
 	<a href="signup.php">Regisztráció</a>
-<!--</div>-->
+</div>
