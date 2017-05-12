@@ -167,9 +167,10 @@ if($_SESSION['login']){?>
 <script> 
 	displayDiv(''); 
 </script>
-<?php } 
+<?php 
+} 
 else{
-	include_once("login1.php");
+	include("login1.php");
 }
 ?>
 </body>
