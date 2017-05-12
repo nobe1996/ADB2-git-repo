@@ -35,10 +35,17 @@ if(isset($_POST['send'])){
 	}
 	$_POST = array();
 }
-?>
-	<?php if ($message != ""){?>
-			<p><?php echo $message;?></p>
-	<?}?>
+
+if ($message != ""){
+	?>
+			<p>
+			<?php
+			echo $message;
+			?>
+			</p>
+	<?php 
+		}
+	?>
 <div id="login" class="login">
 	<form method="post" action="login1.php">
 		Username:<input type="text" name="username" value=""><br>
