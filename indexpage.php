@@ -170,7 +170,6 @@ if($_SESSION['login']){?>
 <?php 
 } 
 else{
-	echo "login kene";
 	include_once("login1.php");
 }
 
