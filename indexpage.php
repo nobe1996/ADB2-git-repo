@@ -3,7 +3,6 @@ session_start();
 include_once('dbconnect.php');
 if (isset($_GET['logout'])){
 	unset($_SESSION['login']);
-	unset($_SESSION['login-name']);
 	unset($_SESSION['id']);
 }
 if (!isset($_SESSION['login'])){
@@ -171,4 +170,9 @@ if($_SESSION['login']){?>
 </script>
 </body>
 </html>
-<?php } ?>
+<?php } 
+else{
+	include("login1.php");
+}
+
+?>
