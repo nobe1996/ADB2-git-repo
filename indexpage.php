@@ -169,7 +169,7 @@ if($_SESSION['login']){?>
 </script>
 <?php } 
 else{
-	include("login1.php");
+	include_once("login1.php");
 }
 ?>
 </body>
