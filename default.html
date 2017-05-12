@@ -30,11 +30,26 @@
 		}
 		document.getElementById(whatToShow).style.display = 'block';
 	}
+
+	function picFormToggle(){
+		var d = document.getElementById("picForm");
+		var b = document.getElementById("formButton");
+		if(d.style.display == 'none'){
+			d.style.display = 'block';
+			b.style.opacity = '0.5';
+		}else{
+			d.style.display = 'none';
+			b.style.opacity = '1';
+		}
+	}
 </script>
 
 </head>
 <body>
 <div id ="container">
+	
+<h3>IMGBoard</h3>
+
     <div id = "navdiv">
                     <ul class = "mainlinks">
                     <li><a id="bigpic" onClick="switchMenu(this.id); displayDiv('bigpicture');">big picture</a></li>
@@ -45,6 +60,37 @@
 </div>
 	<div id="content">
 		<ul id= "picturelist" class="picturelist">
+
+			<p>
+				<button id="formButton" onclick="picFormToggle()">Filter</button>
+			</p>
+			<div class="picForm" id="picForm">
+
+					Filter by location: 
+					<form action="filterLocation.php" method="post">
+						<select>
+							<option value="" disabled="disabled" selected="selected">Location</option>
+							<option value="Szeged">Szeged</option>
+							<option value="Budapest">Budapest</option>
+						</select>
+						<input type="submit">
+					</form>
+					<br />
+					Filter by rating:
+					<form action="filterRating.php" method="post">
+						<select>
+							<option value="5" disabled="disabled" selected="selected">5 stars</option>
+							<option value="4">4 stars</option>
+							<option value="3">3 stars</option>
+							<option value="2">2 stars</option>
+							<option value="1">1 stars</option>
+						</select>
+						<input type="submit">
+					</form>
+					<br />
+					<hr />
+			</div>
+
 			<li>picture<a href="#"><img onclick="switchMenu('bigpic'); displayDiv('bigpicture');" src = "images/autumntree.jpg"/></a></li>
 
 			

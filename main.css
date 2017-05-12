@@ -95,7 +95,8 @@ h3{font-size:1.5em;}
 	display: block;
     margin: auto;
 	max-width: 100%;
-	max-height: 100%;
+	//max-height: 100%;
+	padding-bottom: 20px;
 }
 
 .picturelist {
@@ -131,13 +132,20 @@ h3{font-size:1.5em;}
 	color:#999999;
 }
 
+.picturelist button{
+	background-color: lightblue;
+	border-radius: 8px;
+	font-size: 120%;
+}
+
 .comments{
 	color: white; 
 }
 .comment{
 	padding: 10px;
 	width: 50%;
-	background-color: #999999;
+	background-color: darkslategray;
+	border-radius: 10px;
 	border-style: hidden hidden solid hidden;
 }
 .user{
@@ -149,6 +157,11 @@ h3{font-size:1.5em;}
 .user:hover{
 	color: #333333;
 	opacity: 0.7;
+}
+
+.comments{
+	padding-left: 3%;
+	padding-right: 3%;
 }
 
 .commentText{
@@ -163,8 +176,29 @@ h3{font-size:1.5em;}
 
 .login{
 	text-align: center;
+	padding: 20%;
 	background-color: lightblue;
+	font-size: 130%;
+	margin: 0 auto;
 }
 .login:input{
 	border-radius: 5px 5px 5px 5px;
+}
+
+.userinfo{
+	font-size: 150%;
+	text-align: left;
+	display: inline-flow;
+	padding: 10%;
+}
+.picForm{
+	padding-top: 10px;
+	margin-left: 5%;
+	display: none;
+}
+
+.picForm input{
+	background-color: lightgreen;
+	border-radius: 10px;
+	border-style: hidden;
 }
