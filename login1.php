@@ -41,9 +41,7 @@ if(isset($_POST['send'])){
 			<p><?php echo $message;?></p>
 	<?}?>
 	<form method="post" action="indexpage.php">
-		<label>Felhasználónév:</label>
 		<input type="text" name="username" value="" placeholder="Adja meg felhasználónevét..." required/>
-		<label>Jelszó:</label>
 		<input type="password" name="password" value="" placeholder="Adja meg jelszavát..." required/>
 		<p>
 			<a href="signup.php">Regisztráció</a>
