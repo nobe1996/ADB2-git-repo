@@ -38,8 +38,8 @@ if(isset($_POST['send'])){
 ?>
 <div id="login" class="login">
 	<form method="post" action="indexpage.php">
-		Username:<input type="text" name="username" value="">
-		Password:<input type="password" name="password" value="">
+		Username:<input type="text" name="username" value=""><br>
+		Password:<input type="password" name="password" value=""><br>
 		<input type="submit" name="send" value="Bejelentkezés"/>
 	</form>
 	<a href="signup.php">Regisztráció</a>
