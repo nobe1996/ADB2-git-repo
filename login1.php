@@ -36,7 +36,7 @@ if(isset($_POST['send'])){
 	$_POST = array();
 }
 ?>
-<div id="login" class="login"
+<!--<div id="login" class="login">-->
 	<?php if ($message != ""){?>
 			<p><?php echo $message;?></p>
 	<?}?>
@@ -46,4 +46,4 @@ if(isset($_POST['send'])){
 		<input type="submit" name="send" value="Bejelentkezés"/>
 	</form>
 	<a href="signup.php">Regisztráció</a>
-</div>
+<!--</div>-->
