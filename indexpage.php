@@ -166,9 +166,9 @@ if($_SESSION['login']){?>
 			</div>
 		</div>
 	</div>
-<?php } ?>
 <script> 
 	displayDiv(''); 
 </script>
 </body>
 </html>
+<?php } ?>
