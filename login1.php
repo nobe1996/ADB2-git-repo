@@ -1,3 +1,4 @@
+
 <?php
 session_start();
 include_once('dbconnect.php');
@@ -47,11 +48,11 @@ if(isset($_POST['send'])){
 	$_POST = array();
 }
 ?>
-<!--<div class="login">-->
+<div class="login">
 	<?php if ($message != ""){?>
-		<!--<div class="error-message">-->
+		<div class="error-message">
 			<p><?php echo $message;?></p>
-		<!--</div>-->
+		</div>
 	<?}?>
 	<form class="login-form" method="post" action="./index.php">
 		<label>Felhasználónév:</label>
@@ -64,4 +65,4 @@ if(isset($_POST['send'])){
 		</p>
 		<input type="submit" name="send" value="Bejelentkezés"/>
 	</form>
-<!--</div>-->
+</div>
