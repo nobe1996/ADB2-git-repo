@@ -202,3 +202,15 @@ h3{font-size:1.5em;}
 	border-radius: 10px;
 	border-style: hidden;
 }
+
+.error-message {
+	box-shadow: 0 1px 3px rgba(0,0,0,.13);
+	height: 50px;
+	margin-bottom: 20px;
+	background: #D1CC3F;
+	font-weight: bold;
+	padding-left: 21px;
+	line-height: 50px;
+	color: #0085ba;
+	border-left: 3px solid #ff0000;
+}

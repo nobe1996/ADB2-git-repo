@@ -44,12 +44,14 @@ if(isset($_POST['send'])){
 	$_POST = array();
 }
 ?>
+<div id="login" class="login">
 	<?php if ($message != ""){?>
+	<div class="error-message">
 			<p><?php echo $message;?></p>
+	</div>
 	<?php 
 	}
 	?>
-<div id="login" class="login">
 	<form method="post" action="indexpage.php">
 		Username:<input type="text" name="username" value=""><br>
 		Password:<input type="password" name="password" value=""><br>
