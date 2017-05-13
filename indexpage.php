@@ -88,21 +88,6 @@ if($_SESSION['login']){
 				<button id="formButton" onclick="picFormToggle()">Filter</button>
 			</p>
 			<div class="picForm" id="picForm">
-					Filter by user:
-					<form class="" action="" method="post">
-					<select class="" name="selectuserpic">
-						<option value="" selected disabled>Válassz...</option>
-						<?php
-							$stid1 = oci_parse($conn, "SELECT FELHASZNALONEV FROM FELHASZNALOK");
-							oci_execute($stid1);
-					
-							while ($row = oci_fetch_assoc($stid1)) { 
-								echo '<option value="'. $row["FELHASZNALONEV"] . '">'.$row["FELHASZNALONEV"] .'</option>'; 
-							} 
-						?>
-					</select>
-					<input type="submit" name="sendfelhasznalo" value="Lekérés" onClick="switchMenu(pictureListButton); displayDiv('picturelist');" />
-					</form>
 
 					Filter by location: 
 					<form action="filterLocation.php" method="post">
@@ -129,6 +114,21 @@ if($_SESSION['login']){
 					<hr />
 			</div>
 			
+		<form class="" action="" method="post">
+			Felhasználó képeinek listázása:
+			<select class="" name="selectuserpic">
+				<option value="" selected disabled>Válassz...</option>
+				<?php
+					$stid1 = oci_parse($conn, "SELECT FELHASZNALONEV FROM FELHASZNALOK");
+					oci_execute($stid1);
+					
+					while ($row = oci_fetch_assoc($stid1)) { 
+						echo '<option value="'. $row["FELHASZNALONEV"] . '">'.$row["FELHASZNALONEV"] .'</option>'; 
+					} 
+				?>
+			</select>
+			<input type="submit" name="sendfelhasznalo" value="Lekérés" />
+		</form>
 			<?php 
 				if(isset($_POST['selectuserpic'])){
 					$stid1 = oci_parse($conn, "SELECT URL, FELHASZNALONEV  FROM KEPEK WHERE FELHASZNALONEV LIKE '". $_POST['selectuserpic'] . "'");
@@ -137,7 +137,6 @@ if($_SESSION['login']){
 					while ($row = oci_fetch_assoc($stid1)) { 
 						echo '<li>'. $row["FELHASZNALONEV"] .'<a href="#"><img onclick="switchMenu("bigpic"); displayDiv("bigpicture");" src = "'. $row["URL"].'"/></a></li>';
 					} 
-					
 				}else{
 					$stid1 = oci_parse($conn, "SELECT URL, FELHASZNALONEV  FROM KEPEK");
 					oci_execute($stid1);
@@ -146,7 +145,6 @@ if($_SESSION['login']){
 						echo '<li>'. $row["FELHASZNALONEV"] .'<a href="#"><img onclick="switchMenu("bigpic"); displayDiv("bigpicture");" src = "'. $row["URL"].'"/></a></li>';
 					} 
 				}
-				
 			?>
 		</ul>
 
@@ -179,6 +177,21 @@ if($_SESSION['login']){
 		</div>
 
 		<div id="allTimeTop" class="allTimeTop">
+			<form action="topPlace.php" method="post">
+				<input type="submit" value="Top hely">
+			</form>
+
+			<form action="topCategory.php" method="post">
+				<input type="submit" value="Top kategória">
+			</form>
+
+			<form action="topUser.php" method="post">
+				<input type="submit" value="Top felhasználó">
+			</form>
+
+			<form action="topPic.php" method="post">
+				<input type="submit" value="Top kép">
+			</form>
 
 		</div>
 		
