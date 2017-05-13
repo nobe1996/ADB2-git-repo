@@ -34,7 +34,7 @@ if (!isset($_SESSION['login'])){
 		document.getElementById(elementId).className += " selected";
 	}
 	function displayDiv(whatToShow){
-		var bodyElements = ["picturelist", "userinfo", "upload","bigpicture", "comments", "allTimeTop"]; //add more if needed
+		var bodyElements = ["picturelist", "userinfo", "upload","bigpicture", "comments"]; //add more if needed
 		for(i = 0; i < bodyElements.length; i++){
 			document.getElementById(bodyElements[i]).style.display = 'none';
 		}
@@ -137,7 +137,6 @@ if($_SESSION['login']){
 					while ($row = oci_fetch_assoc($stid1)) { 
 						echo '<li>'. $row["FELHASZNALONEV"] .'<a href="#"><img onclick="switchMenu("bigpic"); displayDiv("bigpicture");" src = "'. $row["URL"].'"/></a></li>';
 					} 
-					echo "<script>switchMenu(pictureListButton); displayDiv('picturelist'); </script>";
 					
 				}else{
 					$stid1 = oci_parse($conn, "SELECT URL, FELHASZNALONEV  FROM KEPEK");
@@ -145,10 +144,9 @@ if($_SESSION['login']){
 					
 					while ($row = oci_fetch_assoc($stid1)) { 
 						echo '<li>'. $row["FELHASZNALONEV"] .'<a href="#"><img onclick="switchMenu("bigpic"); displayDiv("bigpicture");" src = "'. $row["URL"].'"/></a></li>';
-						echo "<script>document.onload = function() {switchMenu(pictureListButton); displayDiv('picturelist');}</script>";
 					} 
 				}
-				
+				echo "<script>switchMenu(pictureListButton); displayDiv('picturelist'); </script>";
 			?>
 		</ul>
 
