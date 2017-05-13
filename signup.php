@@ -54,9 +54,9 @@ $_POST = array();
 	}
 	 ?>
 	<form method="post" action="signup.php">
-		Felhasználónév:*<input type="text" name="username" value=""><br>
-		Név:*<input type="text" name="nev" value=""><br>
-		Jelszó:* (legalább 8 karakter)<input type="password" name="password" value=""><br>
+		Felhasználónév:*<input type="text" name="username" value="" maxlength="20"><br>
+		Név:*<input type="text" name="nev" value="" maxlength="20"><br>
+		Jelszó:* (legalább 8 karakter)<input type="password" name="password" value="" maxlength="20"><br>
 		Jelszó mégegyszer:*<input type="password" name="passwordagain" value=""><br>
 		Csoport:* 
 		<select name="groups">

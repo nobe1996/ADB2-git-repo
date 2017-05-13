@@ -213,9 +213,29 @@ if($_SESSION['login']){
 			echo "<img src='images/".$_GET['bigname']."'/>";
 			
 			echo "<div class='comments'>";
-			echo "<div class='comment'><p class='user'>username</p><p class='commentText'>this is a comment</p></div>";
-			echo "<div class='comment'><p class='user'>username</p><p class='commentText'>this is aanother comment</p></div>";
+			$stid1 = oci_parse($conn, "SELECT KOMMENT_ID, FELHASZNALONEV, KOMMENT  FROM KOMMENT WHERE URL LIKE 'images/" .$_GET["bigname"]."' ORDER BY KOMMENT_ID");
+					oci_execute($stid1);
+					
+					while ($row = oci_fetch_assoc($stid1)) { 
+						echo "<div class='comment'><p class='user'>".$row["KOMMENT_ID"] .": ".$row["FELHASZNALONEV"]."</p><p class='commentText'>".$row["KOMMENT"]."</p></div>";
+					} 
 			echo "</div>";
+			?>
+			<form method="post" action="">
+				Komment szövege:<input type="text" name="comment" value="" maxlength="100">
+				<input type="submit" name="sendcomment" value="Kommentel"/>
+			</form>
+		<?php
+			isset($_POST['sendcomment']){
+					$stmt= oci_parse($conn, "SELECT COUNT(KOMMENT_ID) AS NUMBER_OF_KOMMENT FROM KOMMENT");
+					oci_define_by_name($stmt, 'NUMBER_OF_KOMMENT', $number_of_komment);
+					oci_execute($stmt);
+					oci_fetch($stmt);
+					
+					$values = "'".$number_of_komment."','".htmlspecialchars($_POST["comment"])."','". $_SESSION['login_name']."', 'images/". $_GET['bigname'] ."'";
+					$stid = oci_parse($conn, 'INSERT INTO KOMMENT (KOMMENT_ID, KOMMENT, FELHASZNALONEV, URL) VALUES ('.$values.')');
+					oci_execute($stid);	
+			}
 			
 		}else{
 			/*$stid1 = oci_parse($conn, "SELECT URL, FELHASZNALONEV  FROM KEPEK ORDER BY URL");
@@ -231,13 +251,15 @@ if($_SESSION['login']){
 		?>
 
 		</div>
+		
 		<div id="rate">
-			<form action="ratePic.php" method="post">
+ 			<form action="ratePic.php" method="post">
   				Points:
-  				<input type="range" name="rating" min="1" max="5">
-  				<input type="submit" value="ok">
-			</form>
-		</div>
+   				<input type="range" name="rating" min="1" max="5">
+   				<input type="submit" value="ok">
+ 			</form>
+ 		</div>
+		
 		<!--<div id="comments" class="comments">
 			<div class="comment">
 				<p class="user">
@@ -247,7 +269,6 @@ if($_SESSION['login']){
 					this is a comment
 				</p>
 			</div>
-
 			<div class="comment">
 				<a href="#"><p class="user">
 					username2

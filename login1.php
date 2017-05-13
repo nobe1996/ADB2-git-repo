@@ -51,8 +51,8 @@ if(isset($_POST['send'])){
 	}
 	?>
 	<form method="post" action="indexpage.php">
-		Username:<input type="text" name="username" value=""><br>
-		Password:<input type="password" name="password" value=""><br>
+		Username:<input type="text" name="username" value="" maxlength="20"><br>
+		Password:<input type="password" name="password" value="" maxlength="20"><br>
 		<input type="submit" name="send" value="Bejelentkezés"/>
 	</form>
 	<a href="signup.php">Regisztráció</a>
