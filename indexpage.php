@@ -136,7 +136,7 @@ if($_SESSION['login']){
 					
 					while ($row = oci_fetch_assoc($stid1)) { 
 						$imag = explode("/", $row["URL"]);
-						echo '<li>'. $row["FELHASZNALONEV"] .'<a href="indexpage.php/bigname='.$imag[1] .'"><img onclick="switchMenu("bigpic"); displayDiv("bigpicture");" src = "'. $row["URL"].'"/></a></li>';
+						echo '<li>'. $row["FELHASZNALONEV"] .'<a href="indexpage.php?bigname='.$imag[1] .'"><img onclick="switchMenu("bigpic"); displayDiv("bigpicture");" src = "'. $row["URL"].'"/></a></li>';
 					} 
 					
 				}else{
@@ -145,7 +145,7 @@ if($_SESSION['login']){
 					
 					while ($row = oci_fetch_assoc($stid1)) { 
 						$imag = explode("/", $row["URL"]);
-						echo '<li>'. $row["FELHASZNALONEV"] .'<a href="indexpage.php/bigname='.$imag[1] .'"><img onclick="switchMenu("bigpic"); displayDiv("bigpicture");" src = "'. $row["URL"].'"/></a></li>';
+						echo '<li>'. $row["FELHASZNALONEV"] .'<a href="indexpage.php?bigname='.$imag[1] .'"><img onclick="switchMenu("bigpic"); displayDiv("bigpicture");" src = "'. $row["URL"].'"/></a></li>';
 					} 
 				}
 				//echo "<script>switchMenu(pictureListButton); displayDiv('picturelist'); </script>";
