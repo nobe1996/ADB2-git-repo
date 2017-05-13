@@ -251,9 +251,8 @@ if($_SESSION['login']){
 			</div>
 		</div>-->
 	</div>
-<script>  
-	displayDiv('bigpicture'); 
-	switchMenu('bigPicButton');
+<script> 
+	displayDiv(''); 
 </script>
 <?php 
 } 
