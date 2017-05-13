@@ -70,7 +70,7 @@ if(isset($_POST['submit'])){
 			if (($uploadOk == 1) && ($_POST['location'] != '') && ($_POST['categories'] != '') ) {
 				if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
 					$values = "'".$target_file."','".$_SESSION['login_name']."','".htmlspecialchars($_POST["location"])."','".htmlspecialchars($_POST["categories"])."'";
-				
+					echo $target_file;
 					$stid = oci_parse($conn, 'INSERT INTO KEPEK (URL, FELHASZNALONEV, HELY_ID, KAT_NEV) VALUES ('.$values.')');
 					oci_execute($stid);
 					header("Location: indexpage.php");
