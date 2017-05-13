@@ -221,12 +221,13 @@ if($_SESSION['login']){
 						echo '<td>'. $row["KAT_NEV"] . '</td><td>'.$row["DARAB"] .'</td>';
 						echo "</tr>";
 					} 
+			oci_free_statement($stid);
 		$stid = oci_parse($conn, "SELECT FELHASZNALONEV, COUNT(FELHASZNALONEV) AS DARAB FROM KEPEK GROUP BY FELHASZNALONEV ORDER BY DARAB DESC LIMIT 1");
 					oci_execute($stid);
 			while ($row = oci_fetch_assoc($stid)) { 
 					echo "A legtöbb képpel rendelkező felhasználó: " . $row['FELHASZNALONEV']. ", és " . $row['DARAB']. " darab képpel rendelkezik."; 
 			}
-					
+			oci_free_statement($stid);		
 		?>
 		</div>
 		
