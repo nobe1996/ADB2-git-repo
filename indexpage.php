@@ -61,6 +61,7 @@ if($_SESSION['login']){
 	echo "You have logged in as: ". $_SESSION['login_name'];
 	if(isset($_SESSION['message'])){
 		echo "<script type='text/javascript'>alert('Failed to upload!')</script>";
+		unset($_SESSION['message']);
 	}
 	?>
 
