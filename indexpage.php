@@ -60,7 +60,7 @@ if($_SESSION['login']){
 	
 	echo "You have logged in as: ". $_SESSION['login_name'];
 	if (isset($_SESSION['message'])) {
-		echo "<script>alert('". $_SESSION['message']."');</script>";
+		echo "alert('". $_SESSION['message']."')";
 	}
 	?>
 
