@@ -126,11 +126,14 @@ if($_SESSION['login']){
 			<p> pictures: 420</p>
 			<p> votes: 69</p>
 		</ul>
-		<ul id= "upload" class="userinfo">
+		
+		
+		<div id= "upload" class="upload">
 			<p>Username: asd</p>
 			<p> pictures: 420</p>
 			<p> votes: 69</p>
-		</ul>
+		</div>
+		
 		<div id="bigpicture" class="bigpicture">
 			<img src="images/desertBig.jpg"/>
 
