@@ -28,6 +28,7 @@ if(isset($_POST['submit'])){
 			}
 			if (($uploadOk == 0) || ($_POST['location'] == '') || ($_POST['categories'] == '') ) {
 				$_SESSION['message'] = 'Sikertelen feltöltés.';
+				header("Location: indexpage.php");
 			}
 			
 			if (($uploadOk == 1) && ($_POST['location'] != '') && ($_POST['categories'] != '') ) {
