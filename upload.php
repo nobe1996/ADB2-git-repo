@@ -89,31 +89,13 @@ if(isset($_POST['submit'])){
 				echo 'Mérete ' . round(filesize($filename)/1024) . ' kilobájt.';
 				}
 			}
-			
-	
-	
-	
-	
-	
+		
 }
 ?>
-<div id="login" class="login">
-	<?php if ($message != ""){?>
-			<p><?php echo $message;?></p>
-	<?php 
-	}
-	?>
-	<form method="post" action="indexpage.php">
-		Username:<input type="text" name="username" value=""><br>
-		Password:<input type="password" name="password" value=""><br>
-		<input type="submit" name="send" value="Bejelentkezés"/>
-		
-		
-	</form>
-	        <form action="upload.php" method="post" enctype="multipart/form-data" align="center">
+
+	<form action="upload.php" method="post" enctype="multipart/form-data" align="center">
             Kép feltöltése: <input type="file" name="fileToUpload">
 			Kép készítésének helye:
 			Kategória:
             <input type="submit" value="Feltoltes" name="submit">
-        </form>
-</div>
+    </form>
