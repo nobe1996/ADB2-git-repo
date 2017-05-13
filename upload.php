@@ -28,7 +28,9 @@ if(isset($_POST['submit'])){
 			}
 			if (($uploadOk == 0) || ($_POST['location'] == '') || ($_POST['categories'] == '') ) {
 				echo "<script type='text/javascript'>alert('failed to upload!')</script>";
-				header("Location: indexpage.php");
+				$values = "'".$target_file."','".$_SESSION['login_name']."','".htmlspecialchars($_POST["location"])."','".htmlspecialchars($_POST["categories"])."'";
+				echo 'INSERT INTO KEPEK (URL, FELHASZNALONEV, HELY_ID, KAT_NEV) VALUES ('.$values.')';
+				//header("Location: indexpage.php");
 			}
 			
 			if ($uploadOk == 1 ) {
