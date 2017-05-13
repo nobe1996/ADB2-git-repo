@@ -125,7 +125,7 @@ if($_SESSION['login']){
 		<div id= "userinfo" class="userinfo">
 
 			<div>
-			Username: <?php echo $_SESSION['login_name']; ?>
+			Username: <?php echo $_SESSION['login_name']; ?> <br />
 			Uploaded pictures: <br />
 			Votes: <br />
 			Place: <br />
