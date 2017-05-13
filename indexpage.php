@@ -60,7 +60,7 @@ if (!isset($_SESSION['login'])){
 <?php
 if($_SESSION['login']){
 	
-	echo $_SESSION['login_name'];
+	echo "You have logged in as: ". $_SESSION['login_name'];
 	?>
 
 <div id ="container">
