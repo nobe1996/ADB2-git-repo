@@ -1,8 +1,8 @@
 <?php
-session_start();
 include_once('dbconnect.php');
 $message = "";
 if(isset($_POST['submit'])){
+			session_start();
 			$stmt= oci_parse($conn, "SELECT COUNT(URL) AS NUMBER_OF_PICTURES FROM KEPEK");
 			oci_define_by_name($stmt, 'NUMBER_OF_PICTURES', $number_of_pictures);
 			oci_execute($stmt);
