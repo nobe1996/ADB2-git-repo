@@ -217,7 +217,7 @@ if($_SESSION['login']){
 		
 		$stid = oci_parse($conn, "SELECT KAT_NEV, COUNT(KAT_NEV) AS DARAB FROM KEPEK GROUP BY KAT_NEV");
 					oci_execute($stid);
-					print "<br><table border='1'>";
+					echo "<br><table border='1'>";
 					echo '<tr>';
 						echo '<th>Kategória</th>';
 						echo '<th>Darab</th>';
@@ -228,6 +228,8 @@ if($_SESSION['login']){
 						echo '<td>'. $row["KAT_NEV"] . '</td><td>'.$row["DARAB"] .'</td>';
 						echo "</tr>";
 					} 
+					
+					echo "</table>";
 		?>
 		</div>
 		
