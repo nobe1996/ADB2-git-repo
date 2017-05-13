@@ -34,9 +34,12 @@ if (isset($_POST['signup'])){
 			} else if((htmlspecialchars($_POST['password']) != htmlspecialchars($_POST['passwordagain']))){
 				$message = "A jelszavaknak meg kell egyezniük!";
 			} else {
-				/*$values = "'".htmlspecialchars($_POST["felhasz"])."','".htmlspecialchars($_POST["pass"])."','".htmlspecialchars($_POST["veznev"])."','".htmlspecialchars($_POST["kersznev"])."','".htmlspecialchars($_POST["email"])."'";
-				mysql_query("INSERT INTO `users` (`felhasz`, `jelszo`, `veznev`, `kersznev`, `email`) VALUES (".$values.");");
-				*/$_SESSION['login'] = true;
+				$values = "'".htmlspecialchars($_POST["username"])."','".htmlspecialchars($_POST["password"])."','".htmlspecialchars($_POST["nev"])."','".htmlspecialchars($_POST["groups"])."','".htmlspecialchars($_POST["hometown"])."'";
+				
+				$stid = oci_parse($conn, 'INSERT INTO FELHASZNALOK (FELHASZNALONEV, JELSZO, NEV, HELY_ID, CS_NEV) VALUES VALUES ('.$values.');');
+				oci_execute($stid);
+				
+				$_SESSION['login'] = true;
 				$_SESSION['login_name']= htmlspecialchars($_POST['username']);
 				header("Location: ./indexpage.php");
 			}
