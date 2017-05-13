@@ -46,9 +46,7 @@ if(isset($_POST['send'])){
 ?>
 <div id="login" class="login">
 	<?php if ($message != ""){?>
-	<div class="error-message">
 			<p><?php echo $message;?></p>
-	</div>
 	<?php 
 	}
 	?>
