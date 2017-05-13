@@ -211,7 +211,23 @@ if($_SESSION['login']){
 		<?php 
 		if(isset($_GET['bigname'])){
 			echo "<img src='images/".$_GET['bigname']."'/>";
-			
+			?>
+			<form method="post" action="">
+				Komment szövege:<input type="text" name="comment" value="" maxlength="100">
+				<input type="submit" name="sendcomment" value="Kommentel"/>
+			</form>
+		<?php
+			if(isset($_POST['sendcomment'])){
+					$stmt= oci_parse($conn, "SELECT COUNT(KOMMENT_ID) AS NUMBER_OF_KOMMENT FROM KOMMENT");
+					oci_define_by_name($stmt, 'NUMBER_OF_KOMMENT', $number_of_komment);
+					oci_execute($stmt);
+					oci_fetch($stmt);
+					
+					$komment_id = $number_of_komment +1;
+					$values = "'".$komment_id."','".htmlspecialchars($_POST["comment"])."','". $_SESSION['login_name']."', 'images/". $_GET['bigname'] ."'";
+					$stid = oci_parse($conn, 'INSERT INTO KOMMENT (KOMMENT_ID, KOMMENT, FELHASZNALONEV, URL) VALUES ('.$values.')');
+					oci_execute($stid);	
+			}
 			echo "<div class='comments'>";
 			$stid1 = oci_parse($conn, "SELECT FELHASZNALONEV, KOMMENT  FROM KOMMENT WHERE URL LIKE 'images/" .$_GET["bigname"]."' ORDER BY KOMMENT_ID");
 					oci_execute($stid1);
