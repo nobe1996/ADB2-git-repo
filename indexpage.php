@@ -129,9 +129,9 @@ if($_SESSION['login']){
 		
 		
 		<div id= "upload" class="upload">
-			<p>Username: asd</p>
-			<p> pictures: 420</p>
-			<p> votes: 69</p>
+			<?php
+				include_once("upload.php");
+			?>
 		</div>
 		
 		<div id="bigpicture" class="bigpicture">
