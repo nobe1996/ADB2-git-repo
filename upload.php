@@ -84,12 +84,12 @@ if(isset($_POST['submit'])){
 
 			} else {
 				if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-					echo "A ". basename( $_FILES["fileToUpload"]["name"]). " nevű fájl feltöltve.";
-					$filename = basename( $_FILES["fileToUpload"]["name"]);
-				echo 'Mérete ' . round(filesize($filename)/1024) . ' kilobájt.';
+					echo "A ". $newfilename . " nevű fájl feltöltve.";
+					
+					
 				}
 			}
-		
+			header("Location: indexpage.php");
 }
 ?>
 
