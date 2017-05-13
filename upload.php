@@ -26,6 +26,11 @@ if(isset($_POST['submit'])){
 			if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" ) {
 				$uploadOk = 0;
 			}
+			
+			echo $uploadOk;
+			echo $_POST['location'];
+			echo $_POST['categories'];
+			
 			if (($uploadOk == 1) && ($_POST['location'] != '') && ($_POST['categories'] != '') ) {
 				if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
 					$values = "'".$target_file."','".$_SESSION['login_name']."','".htmlspecialchars($_POST["location"])."','".htmlspecialchars($_POST["categories"])."'";
