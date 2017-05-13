@@ -231,7 +231,7 @@ if($_SESSION['login']){
 		?>
 
 		</div>
-		<div>
+		<div id="rate">
 			<form action="ratePic.php" method="post">
   				Points:
   				<input type="range" name="rating" min="1" max="5">
