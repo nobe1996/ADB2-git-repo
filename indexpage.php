@@ -58,7 +58,10 @@ if (!isset($_SESSION['login'])){
 </head>
 <body>
 <?php
-if($_SESSION['login']){?>
+if($_SESSION['login']){
+	
+	echo $_SESSION['login_name'];
+	?>
 
 <div id ="container">
 	
