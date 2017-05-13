@@ -24,7 +24,7 @@
 	}
 
 	function displayDiv(whatToShow){
-		var bodyElements = ["picturelist", "userinfo", "bigpicture", "comments"]; //add more if needed
+		var bodyElements = ["picturelist", "userinfo", "bigpicture", "comments", "upload", "allTimeTop"]; //add more if needed
 		for(i = 0; i < bodyElements.length; i++){
 			document.getElementById(bodyElements[i]).style.display = 'none';
 		}
@@ -52,13 +52,16 @@
 
     <div id = "navdiv">
                     <ul class = "mainlinks">
-                    <li><a id="bigpic" onClick="switchMenu(this.id); displayDiv('bigpicture');">big picture</a></li>
+                    <li><a id="bigpicButton" onClick="switchMenu(this.id); displayDiv('bigpicture');">big picture</a></li>
                     <li><a id="infoButton" onClick="switchMenu(this.id); displayDiv('userinfo');">user</a></li>
-                    <li><a id="pictureListButton" onClick="switchMenu(this.id); displayDiv('picturelist');">list 2</a></li>
+                    <li><a id="pictureListButton" onClick="switchMenu(this.id); displayDiv('picturelist');">Pictures</a></li>
+					<li><a id="uploadButton" onclick="switchMenu(this.id); displayDiv('upload');">Upload</a></li>
+					<li><a id="topButton" onclick="switchMenu(this.id); displayDiv('allTimeTop');">Top Pictures</a></li>
                 </ul>
     </div>
 </div>
 	<div id="content">
+
 		<ul id= "picturelist" class="picturelist">
 
 			<p>
@@ -73,7 +76,7 @@
 							<option value="Szeged">Szeged</option>
 							<option value="Budapest">Budapest</option>
 						</select>
-						<input type="submit">
+						<input type="submit" value="Filter">
 					</form>
 					<br />
 					Filter by rating:
@@ -85,7 +88,7 @@
 							<option value="2">2 stars</option>
 							<option value="1">1 stars</option>
 						</select>
-						<input type="submit">
+						<input type="submit" value="Filter">
 					</form>
 					<br />
 					<hr />
@@ -102,9 +105,24 @@
 			<li>picture<a href="#"><img src = "images/autumntree.jpg"/></a></li>
 		</ul>
 		<ul id= "userinfo" class="userinfo">
-			<p>Username: asd</p>
-			<p> pictures: 420</p>
-			<p> votes: 69</p>
+
+			<div>
+			Username: <br />
+			Uploaded pictures: <br />
+			Votes: <br />
+			Place: <br />
+			</div>
+
+			<div class="newPlace">
+				Add a new place:
+				<form action="newPlace.php" method="post">
+						<input type="text" value="country"><br />
+						<input type="text" value="state"><br />
+						<input type="text" value="city"><br/>
+						<input type="submit" value="Add Place">
+					</form>
+			</div>
+
 		</ul>
 		<div id="bigpicture" class="bigpicture">
 			<img src="images/desertBig.jpg"/>
@@ -149,6 +167,23 @@
 				</p>
 			</div>
 		</div>
+
+		<div id="upload" class="upload">
+			<form action="upload.php" method="post">
+				<input type="file" id="file">
+				<select>
+					<option value="" disabled="disabled" selected="selected">Location</option>
+					<option value="Szeged">Szeged</option>
+					<option value="Budapest">Budapest</option>
+				</select>
+				<input type="submit" value="Upload">
+			</form>
+		</div>
+
+		<div id="allTimeTop" class="allTimeTop">
+
+		</div>
+
 	</div>
 
 <script> 

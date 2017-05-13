@@ -188,17 +188,30 @@ h3{font-size:1.5em;}
 .userinfo{
 	font-size: 150%;
 	text-align: left;
-	display: inline-flow;
 	padding: 10%;
 }
+
+.userinfo div{
+	display: inline-block;
+}
+
+.newPlace{
+	float: right;
+	padding: 10px;
+	border-radius: 10px;
+	border: 1px solid lightblue;
+}
+
 .picForm{
 	padding-top: 10px;
 	margin-left: 5%;
 	display: none;
 }
 
-.picForm input{
-	background-color: lightgreen;
-	border-radius: 10px;
-	border-style: hidden;
+.upload{
+	padding: 3%;
+}
+
+.upload input{
+	padding: 5px;
 }
