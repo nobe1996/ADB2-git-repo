@@ -47,7 +47,9 @@ $_POST = array();
 <div class="login">
 	<?php if ($message != ""){?>
 			<p><?php echo $message;?></p>
-	<?}?>
+	<?php 
+	}
+	 ?>
 	<form method="post" action="signup.php">
 		Felhasználónév:*<input type="text" name="username" value="">
 		Név:*<input type="text" name="nev" value="">
