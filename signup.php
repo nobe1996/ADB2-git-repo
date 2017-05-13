@@ -46,7 +46,7 @@ $_POST = array();
 		<select name="groups">
 			<option value="" disabled selected>Válassz csoportot.</option>
 				<?php
-					$stid = oci_parse($conn, "SELECT CS_NEV FROM CSOPORTOK;");
+					$stid = oci_parse($conn, "SELECT CS_NEV FROM CSOPORTOK");
 					oci_execute($stid);
 
 					while ($row = oci_fetch_assoc($stid)) { 
@@ -58,7 +58,7 @@ $_POST = array();
 		<select name="hometown">
 				<option value="" disabled selected>Válassz lakhelyet.</option>
 				<?php
-					$stid1 = oci_parse($conn, "SELECT HELY_ID, ORSZAG, MEGYE, TELEPULES FROM HELYEK;");
+					$stid1 = oci_parse($conn, "SELECT HELY_ID, ORSZAG, MEGYE, TELEPULES FROM HELYEK");
 					oci_execute($stid1);
 
 					while ($row = oci_fetch_assoc($stid1)) { 
@@ -69,7 +69,7 @@ $_POST = array();
 		<input type="submit" name="signup" value="Regisztráció">
 	</form>
 	<?php
-					$stid1 = oci_parse($conn, "SELECT HELY_ID, ORSZAG, MEGYE, TELEPULES FROM HELYEK;");
+					$stid1 = oci_parse($conn, "SELECT HELY_ID, ORSZAG, MEGYE, TELEPULES FROM HELYEK");
 					oci_execute($stid1);
 
 					while ($row = oci_fetch_assoc($stid1)) { 
