@@ -69,10 +69,11 @@ if($_SESSION['login']){
 
     <div id = "navdiv">
                     <ul class = "mainlinks">
+					<li><a href="indexpage.php?logout">Logout</a></li>
                     <li><a id="bigpic" onClick="switchMenu(this.id); displayDiv('bigpicture');">big picture</a></li>
                     <li><a id="infoButton" onClick="switchMenu(this.id); displayDiv('userinfo');">user</a></li>
                     <li><a id="pictureListButton" onClick="switchMenu(this.id); displayDiv('picturelist');">list 2</a></li>
-					<li><a href="indexpage.php?logout">Logout</a></li>
+					
                 </ul>
     </div>
 </div>
