@@ -210,13 +210,10 @@ if($_SESSION['login']){
 		<?php 
 		$stid = oci_parse($conn, "SELECT KAT_NEV, COUNT(KAT_NEV) AS DARAB FROM KEPEK GROUP BY KAT_NEV");
 					oci_execute($stid);
-					print "<table border='1'>";
-					$nfields = oci_num_fields($stid);
+					print "<br><table border='1'>";
 					echo '<tr>';
-							for ($i = 1; $i<=$nfields; $i++){
-								$field = oci_field_name($stid, $i);
-								echo '<th>' . $field . '</th>';
-							}
+						echo '<th>Kategória</th>';
+						echo '<th>Darab</th>';
 					echo '</tr>';
 					
 					while ($row = oci_fetch_assoc($stid)) { 
