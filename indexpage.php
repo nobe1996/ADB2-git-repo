@@ -209,7 +209,7 @@ if($_SESSION['login']){
 		<?php 
 		if(isset($_GET['bigname'])){
 			echo "<img src='".$_GET['bigname']."'/>";
-		
+		}
 		?>
 			<div class="comments">
 				<div class="comment">
