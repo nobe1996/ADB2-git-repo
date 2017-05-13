@@ -59,9 +59,7 @@ if (!isset($_SESSION['login'])){
 if($_SESSION['login']){
 	
 	echo "You have logged in as: ". $_SESSION['login_name'];
-	if (isset($_SESSION['message'])) {
-		echo "alert('". $_SESSION['message']."')";
-	}
+
 	?>
 
 <div id ="container">

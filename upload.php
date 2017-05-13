@@ -27,7 +27,7 @@ if(isset($_POST['submit'])){
 				$uploadOk = 0;
 			}
 			if (($uploadOk == 0) || ($_POST['location'] == '') || ($_POST['categories'] == '') ) {
-				$_SESSION['message'] = 'Sikertelen feltöltés.';
+				echo "<script type='text/javascript'>alert('failed to upload!')</script>";
 				header("Location: indexpage.php");
 			}
 			
