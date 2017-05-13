@@ -35,7 +35,7 @@ if (!isset($_SESSION['login'])){
 	}
 
 	function displayDiv(whatToShow){
-		var bodyElements = ["picturelist", "userinfo", "bigpicture", "comments"]; //add more if needed
+		var bodyElements = ["picturelist", "userinfo", "bigpicture", "comments", "upload"]; //add more if needed
 		for(i = 0; i < bodyElements.length; i++){
 			document.getElementById(bodyElements[i]).style.display = 'none';
 		}
@@ -72,6 +72,7 @@ if($_SESSION['login']){
 					<li><a href="indexpage.php?logout">Logout</a></li>
                     <li><a id="bigpic" onClick="switchMenu(this.id); displayDiv('bigpicture');">big picture</a></li>
                     <li><a id="infoButton" onClick="switchMenu(this.id); displayDiv('userinfo');">user</a></li>
+					<li><a id="upload" onClick="switchMenu(this.id); displayDiv('upload');">Upload image</a></li>
                     <li><a id="pictureListButton" onClick="switchMenu(this.id); displayDiv('picturelist');">list 2</a></li>
 					
                 </ul>
@@ -121,6 +122,11 @@ if($_SESSION['login']){
 			<li>picture<a href="#"><img src = "images/autumntree.jpg"/></a></li>
 		</ul>
 		<ul id= "userinfo" class="userinfo">
+			<p>Username: asd</p>
+			<p> pictures: 420</p>
+			<p> votes: 69</p>
+		</ul>
+		<ul id= "upload" class="userinfo">
 			<p>Username: asd</p>
 			<p> pictures: 420</p>
 			<p> votes: 69</p>
