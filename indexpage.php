@@ -226,7 +226,7 @@ if($_SESSION['login']){
 					oci_execute($stid1);
 			while ($row = oci_fetch_assoc($stid1)) { 
 					echo "A legtöbb képpel rendelkező felhasználó: " . $row['FELHASZNALONEV']. ", és " . $row['DARAB']. " darab képpel rendelkezik.";
-					echo "<br>"
+					echo "<br>";
 			}
 			oci_free_statement($stid1);		
 		?>
