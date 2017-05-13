@@ -43,7 +43,6 @@ if(isset($_POST['send'])){
 	}
 	$_POST = array();
 	$_SESSION['login'] = true;
-	$_SESSION['login_name'] = $number_of_rows;
 	header("Location: indexpage.php");
 }
 ?>
