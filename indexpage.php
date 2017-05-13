@@ -131,7 +131,7 @@ if($_SESSION['login']){
 			
 			<?php 
 				if(isset($_POST['selectuserpic'])){
-					$stid1 = oci_parse($conn, "SELECT URL, FELHASZNALONEV  FROM KEPEK WHERE FELHASZNALONEV LIKE '". $_POST['selectuserpic'] . "'");
+					$stid1 = oci_parse($conn, "SELECT URL, FELHASZNALONEV  FROM KEPEK WHERE FELHASZNALONEV LIKE '". $_POST['selectuserpic'] . "' ORDER BY URL");
 					oci_execute($stid1);
 					
 					while ($row = oci_fetch_assoc($stid1)) { 
@@ -139,14 +139,14 @@ if($_SESSION['login']){
 					} 
 					
 				}else{
-					$stid1 = oci_parse($conn, "SELECT URL, FELHASZNALONEV  FROM KEPEK");
+					$stid1 = oci_parse($conn, "SELECT URL, FELHASZNALONEV  FROM KEPEK ORDER BY URL");
 					oci_execute($stid1);
 					
 					while ($row = oci_fetch_assoc($stid1)) { 
 						echo '<li>'. $row["FELHASZNALONEV"] .'<a href="#"><img onclick="switchMenu("bigpic"); displayDiv("bigpicture");" src = "'. $row["URL"].'"/></a></li>';
 					} 
 				}
-				echo "<script>switchMenu(pictureListButton); displayDiv('picturelist'); </script>";
+				//echo "<script>switchMenu(pictureListButton); displayDiv('picturelist'); </script>";
 			?>
 		</ul>
 
