@@ -34,7 +34,7 @@ if (!isset($_SESSION['login'])){
 		document.getElementById(elementId).className += " selected";
 	}
 	function displayDiv(whatToShow){
-		var bodyElements = ["picturelist", "userinfo", "upload","bigpicture", "allTimeTop", "addDatas" ]; //add more if needed
+		var bodyElements = ["picturelist", "userinfo", "upload","bigpicture", "allTimeTop" ]; //add more if needed
 		for(i = 0; i < bodyElements.length; i++){
 			document.getElementById(bodyElements[i]).style.display = 'none';
 		}
@@ -284,10 +284,6 @@ if($_SESSION['login']){
  			</form>
  		</div>
 		</div>
-		
-		<div id="addDatas">
-
- 		</div>
 		
 		<!--<div id="comments" class="comments">
 			<div class="comment">
