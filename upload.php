@@ -47,7 +47,7 @@ if(isset($_POST['submit'])){
 			$newfilename = ($number_of_pictures+1). '.' . end($temp);
 			$target_dir = "images/";
 			
-			$target_file = $target_dir . $newfilename);
+			$target_file = $target_dir . $newfilename;
 			
 			$uploadOk = 1;
 			$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
