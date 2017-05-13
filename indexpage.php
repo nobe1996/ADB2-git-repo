@@ -252,7 +252,7 @@ if($_SESSION['login']){
 		</div>-->
 	</div>
 <script> 
-	displayDiv(''); 
+	displayDiv('bigpicture'); 
 </script>
 <?php 
 } 
