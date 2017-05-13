@@ -4,7 +4,6 @@ include_once('dbconnect.php');
 if (isset($_GET['logout'])){
 	unset($_SESSION['login']);
 	unset($_SESSION['login-name']);
-	unset($_SESSION['message']);
 }
 if (!isset($_SESSION['login'])){
 	$_SESSION['login'] = false;
@@ -17,6 +16,7 @@ if (!isset($_SESSION['login'])){
 <link href="main.css" rel="stylesheet" type="text/css" />
 <title>Test</title>
 <script type="text/javascript">
+
 	function switchMenu(elementId){
 		var allElements = document.getElementsByTagName("*");
 			var allIds = [];
@@ -33,6 +33,7 @@ if (!isset($_SESSION['login'])){
 		}
 		document.getElementById(elementId).className += " selected";
 	}
+
 	function displayDiv(whatToShow){
 		var bodyElements = ["picturelist", "userinfo", "upload","bigpicture", "comments"]; //add more if needed
 		for(i = 0; i < bodyElements.length; i++){
@@ -40,6 +41,7 @@ if (!isset($_SESSION['login'])){
 		}
 		document.getElementById(whatToShow).style.display = 'block';
 	}
+
 	function picFormToggle(){
 		var d = document.getElementById("picForm");
 		var b = document.getElementById("formButton");
@@ -59,10 +61,6 @@ if (!isset($_SESSION['login'])){
 if($_SESSION['login']){
 	
 	echo "You have logged in as: ". $_SESSION['login_name'];
-	if(isset($_SESSION['message'])){
-		echo "<script type='text/javascript'>alert('Failed to upload!')</script>";
-		unset($_SESSION['message']);
-	}
 	?>
 
 <div id ="container">
@@ -71,7 +69,6 @@ if($_SESSION['login']){
 
     <div id = "navdiv">
                     <ul class = "mainlinks">
-					<li><a href="indexpage.php?logout">Logout</a></li>
                     <li><a id="bigpicButton" onClick="switchMenu(this.id); displayDiv('bigpicture');">big picture</a></li>
                     <li><a id="infoButton" onClick="switchMenu(this.id); displayDiv('userinfo');">user</a></li>
                     <li><a id="pictureListButton" onClick="switchMenu(this.id); displayDiv('picturelist');">Pictures</a></li>
@@ -113,20 +110,22 @@ if($_SESSION['login']){
 					<br />
 					<hr />
 			</div>
-			<?php 
-					$stid1 = oci_parse($conn, "SELECT URL, FELHASZNALONEV  FROM KEPEK");
-					oci_execute($stid1);
-					
-					while ($row = oci_fetch_assoc($stid1)) { 
-						echo '<li>'. $row["FELHASZNALONEV"] .'<a href="#"><img onclick="switchMenu("bigpic"); displayDiv("bigpicture");" src = "'. $row["URL"].'"/></a></li>';
-					} 
-			?>
+
+			<li>picture<a href="#"><img onclick="switchMenu('bigpic'); displayDiv('bigpicture');" src = "images/autumntree.jpg"/></a></li>
+
+			
+			<li>picture<a href="#"><img src = "images/autumntree.jpg"/></a></li>
+			<li>picture<a href="#"><img src = "images/autumntree.jpg"/></a></li>
+			<li>pictures<a href="#"><img src = "images/autumntree.jpg"/></a></li>
+			<li>picture<a href="#"><img src = "images/autumntree.jpg"/></a></li>
+			<li>picture<a href="#"><img src = "images/autumntree.jpg"/></a></li>
+			<li>picture<a href="#"><img src = "images/autumntree.jpg"/></a></li>
 		</ul>
 
 		<div id= "userinfo" class="userinfo">
 
 			<div>
-			Username: <br />
+			Username: <?php echo $_SESSION['login_name']; ?>
 			Uploaded pictures: <br />
 			Votes: <br />
 			Place: <br />
@@ -207,6 +206,7 @@ if($_SESSION['login']){
 else{
 	include_once("login1.php");
 }
+
 oci_close($conn);
 ?>
 </body>
