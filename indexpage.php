@@ -221,7 +221,7 @@ if($_SESSION['login']){
 					} 
 			echo "</div>";
 			?>
-			<form method="post" action="">
+			<form method="post" action="indexpage.php">
 				Komment szövege:<input type="text" name="comment" value="" maxlength="100">
 				<input type="submit" name="sendcomment" value="Kommentel"/>
 			</form>
@@ -232,7 +232,7 @@ if($_SESSION['login']){
 					oci_execute($stmt);
 					oci_fetch($stmt);
 					
-					$values = "'".$number_of_komment."','".htmlspecialchars($_POST["comment"])."','". $_SESSION['login_name']."', 'images/". $_GET['bigname'] ."'";
+					$values = "'".($number_of_komment+1)."','".htmlspecialchars($_POST["comment"])."','". $_SESSION['login_name']."', 'images/". $_GET['bigname'] ."'";
 					$stid = oci_parse($conn, 'INSERT INTO KOMMENT (KOMMENT_ID, KOMMENT, FELHASZNALONEV, URL) VALUES ('.$values.')');
 					oci_execute($stid);	
 			}
