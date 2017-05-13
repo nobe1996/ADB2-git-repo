@@ -221,7 +221,7 @@ if($_SESSION['login']){
 					} 
 			echo "</div>";
 			?>
-			<form method="post" action="">
+			<form method="post" action="<?php echo "indexpage.php?bigname=".$_GET['bigname']; ?>">
 				Komment szövege:<input type="text" name="comment" value="" maxlength="100">
 				<input type="submit" name="sendcomment" value="Kommentel"/>
 			</form>
