@@ -13,7 +13,7 @@ if (isset($_POST['signup'])){
 	if (htmlspecialchars($_POST["username"]) == "" ||
 			htmlspecialchars($_POST["nev"]) == "" ||
 			htmlspecialchars($_POST["password"]) == "" ||
-			htmlspecialchars($_POST["passwordagain"]) == "" ||)
+			htmlspecialchars($_POST["passwordagain"]) == "" ||
 			htmlspecialchars($_POST["groups"]) == "" ||
 			htmlspecialchars($_POST["hometown"]) == ""){
 		$message = "A *-al jelölt mezők kitöltése kötelező!";
