@@ -226,7 +226,7 @@ if($_SESSION['login']){
 				<input type="submit" name="sendcomment" value="Kommentel"/>
 			</form>
 		<?php
-			isset($_POST['sendcomment']){
+			if(isset($_POST['sendcomment'])){
 					$stmt= oci_parse($conn, "SELECT COUNT(KOMMENT_ID) AS NUMBER_OF_KOMMENT FROM KOMMENT");
 					oci_define_by_name($stmt, 'NUMBER_OF_KOMMENT', $number_of_komment);
 					oci_execute($stmt);
