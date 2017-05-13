@@ -153,8 +153,16 @@ if($_SESSION['login']){
 		<div id= "userinfo" class="userinfo">
 
 			<div>
-			Username: <br />
-			Uploaded pictures: <br />
+			Username: <?php echo $_SESSION['login_name']; ?> <br />
+			Uploaded pictures: 
+			<?php 
+				$stmt= oci_parse($conn, "SELECT COUNT(URL) AS NUMBER_OF_PICTURES FROM KEPEK WHERE FELHASZNALONEV LIKE '".$_SESSION['login_name']."'");
+			oci_define_by_name($stmt, 'NUMBER_OF_PICTURES', $number_of_pictures);
+			oci_execute($stmt);
+			oci_fetch($stmt);
+			echo $number_of_pictures;
+			?>
+			<br />
 			Votes: <br />
 			Place: <br />
 			</div>
