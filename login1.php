@@ -36,6 +36,7 @@ if(isset($_POST['send'])){
 	}
 	$_POST = array();
 	$_SESSION['login'] = true;
+	echo oci_num_rows($stid);
 	header("Location: indexpage.php");
 }
 ?>
