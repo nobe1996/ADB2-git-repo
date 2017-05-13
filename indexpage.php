@@ -206,6 +206,26 @@ if($_SESSION['login']){
 			<form action="topPic.php" method="post">
 				<input type="submit" value="Top kép">
  		</form>
+		
+		<?php 
+		$stid = oci_parse($conn, "SELECT KAT_NEV, COUNT(KAT_NEV) AS DARAB FROM KEPEK GROUP BY KAT_NEV");
+					oci_execute($stid);
+					print "<table border='1'>";
+					$nfields = oci_num_fields($stid);
+					echo '<tr>';
+							for ($i = 1; $i<=$nfields; $i++){
+								$field = oci_field_name($stid, $i);
+								echo '<th>' . $field . '</th>';
+							}
+					echo '</tr>';
+					
+					while ($row = oci_fetch_assoc($stid)) { 
+						echo "<tr>";
+						echo '<td>'. $row["KAT_NEV"] . '</td><td>'.$row["DARAB"] .'</td>';
+						echo "</tr>";
+					} 
+		
+		?>
 		</div>
 		
 		<div id="bigpicture" class="bigpicture">
