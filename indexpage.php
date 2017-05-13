@@ -118,9 +118,8 @@ if($_SESSION['login']){
 					oci_execute($stid1);
 					
 					while ($row = oci_fetch_assoc($stid1)) { 
-						echo '<li>'. $row["FELHASZNALONEV"] .'<a href="#"><img onclick="switchMenu('bigpic'); displayDiv('bigpicture');" src = "'. $row["URL"].'"/></a></li>'
+						echo '<li>'. $row["FELHASZNALONEV"] .'<a href="#"><img onclick="switchMenu("bigpic"); displayDiv("bigpicture");" src = "'. $row["URL"].'"/></a></li>'
 					} 
-			<li>picture<a href="#"><img onclick="switchMenu('bigpic'); displayDiv('bigpicture');" src = "images/autumntree.jpg"/></a></li>
 ?>
 		</ul>
 
