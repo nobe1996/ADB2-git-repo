@@ -36,11 +36,12 @@ if (isset($_POST['signup'])){
 			} else {
 				$values = "'".htmlspecialchars($_POST["username"])."','".htmlspecialchars($_POST["password"])."','".htmlspecialchars($_POST["nev"])."','".htmlspecialchars($_POST["groups"])."','".htmlspecialchars($_POST["hometown"])."'";
 				
-				$stid = oci_parse($conn, 'INSERT INTO FELHASZNALOK (FELHASZNALONEV, JELSZO, NEV, HELY_ID, CS_NEV) VALUES VALUES ('.$values.');');
+				$stid = oci_parse($conn, 'INSERT INTO FELHASZNALOK (FELHASZNALONEV, JELSZO, NEV, HELY_ID, CS_NEV) VALUES ('.$values.');');
 				oci_execute($stid);
 				
 				$_SESSION['login'] = true;
-				$_SESSION['login_name']= htmlspecialchars($_POST['username']);
+				//$_SESSION['login_name']= htmlspecialchars($_POST['username']);
+				$_SESSION['login_name']='INSERT INTO FELHASZNALOK (FELHASZNALONEV, JELSZO, NEV, HELY_ID, CS_NEV) VALUES ('.$values.');';
 				header("Location: ./indexpage.php");
 			}
 	}
