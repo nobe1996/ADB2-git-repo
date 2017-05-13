@@ -7,49 +7,29 @@
 <body>
 <?php
 include_once('dbconnect.php');
+
 $message = "";
-if(isset($_POST['send'])){
-	$jelszo = htmlspecialchars($_POST['password']);
-	$username = htmlspecialchars($_POST['username']);
-	
-	$stid = oci_parse($conn, "SELECT FELHASZNALONEV, JELSZO FROM FELHASZNALOK WHERE FELHASZNALONEV LIKE '" . $username ."'");
-
-	if (!$stid) {
-		$e = oci_error($conn);
-		trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+if (isset($_POST['signup'])){
+	if (htmlspecialchars($_POST["username"]) == "" ||
+			htmlspecialchars($_POST["nev"]) == "" ||
+			htmlspecialchars($_POST["password"]) == "" ||
+			htmlspecialchars($_POST["passwordagain"]) == "" ||)
+			htmlspecialchars($_POST["groups"]) == "" ||
+			htmlspecialchars($_POST["hometown"]) == ""){
+		$message = "A *-al jelölt mezők kitöltése kötelező!";
+	} else if(strlen(htmlspecialchars($_POST['password'])) < 8){
+		$message = "A jelszónak min 8 karakternek kell lennie!";
+	} else if((htmlspecialchars($_POST['password']) != htmlspecialchars($_POST['passwordagain']))){
+		$message = "A jelszavaknak meg kell egyezniük!";
+	} else {
+		/*$values = "'".htmlspecialchars($_POST["felhasz"])."','".htmlspecialchars($_POST["pass"])."','".htmlspecialchars($_POST["veznev"])."','".htmlspecialchars($_POST["kersznev"])."','".htmlspecialchars($_POST["email"])."'";
+		mysql_query("INSERT INTO `users` (`felhasz`, `jelszo`, `veznev`, `kersznev`, `email`) VALUES (".$values.");");
+		*/$_SESSION['login'] = true;
+		$_SESSION['login_name']= htmlspecialchars($_POST['username']);
+		header("Location: ./indexpage.php");
 	}
-
-	$r = oci_execute($stid);
-
-	if (!$r) {
-		$e = oci_error($stid1);
-		trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-	}
-
-	$stmt= oci_parse($conn, "SELECT COUNT(FELHASZNALONEV) AS NUMBER_OF_ROWS FROM FELHASZNALOK WHERE FELHASZNALONEV LIKE '" . $username ."'");
-	oci_define_by_name($stmt, 'NUMBER_OF_ROWS', $number_of_rows);
-	oci_execute($stmt);
-	oci_fetch($stmt);
-	
-	
-	
-	if ($username != "" && $jelszo != "") {
-		if ($number_of_rows == '0'){
-			$message = "A felhasználó nem létezik!";
-		} else {
-			$row = oci_fetch_assoc($stid);		
-			if ($jelszo != $row['JELSZO']){
-				$message = "A megadott jelszó nem helyes!";
-			} else {
-				$_SESSION['login'] = true;
-				$_SESSION['login_name'] = $row['FELHASZNALONEV'];
-				$_POST = array();
-				header("Location: indexpage.php");
-			}
-		}
-	}
-	$_POST = array();
 }
+$_POST = array();
 ?>
 <div id="login" class="login">
 	<?php if ($message != ""){?>
@@ -64,6 +44,41 @@ if(isset($_POST['send'])){
 	</form>
 </div>
 
+<div class="login">
+	<?php if ($message != ""){?>
+			<p><?php echo $message;?></p>
+	<?}?>
+	<form method="post" action="signup.php">
+		Felhasználónév:*<input type="text" name="username" value="">
+		Név:*<input type="text" name="nev" value="">
+		Jelszó:* (legalább 8 karakter)<input type="password" name="pass" value="">
+		Jelszó mégegyszer:*<input type="password" name="passwordagain" value="">
+		Csoport:* 
+		<select name="groups">
+			<option value="" disabled selected>Válassz csoportot.</option>
+				<?php
+					$stid = oci_parse($conn, "SELECT CS_NEV FROM CSOPORTOK;");
+					$r = oci_execute($stid);
 
+					while ($row = oci_fetch_assoc($stid)) { 
+						echo '<option value="'. $row["CS_NEV"] . '">'.$row["CS_NEV"] .'</option>'; 
+					} 
+				?>
+		</select>
+		Lakhely:*
+		<select name="hometown">
+				<option value="" disabled selected>Válassz lakhelyt.</option>
+				<?php
+					$stid = oci_parse($conn, "SELECT HELY_ID, ORSZAG, MEGYE, TELEPULES FROM CSOPORTOK;");
+					$r = oci_execute($stid);
+
+					while ($row = oci_fetch_assoc($stid)) { 
+						echo '<option value="'. $row["HELY_ID"] . '">'.$row["ORSZAG"] .','.$row["MEGYE"] .','.$row["TELEPULES"] .'</option>'; 
+					} 
+				?>
+		</select>
+		<input type="submit" name="signup" value="Regisztráció">
+	</form>
+</div>
 </body>
 </html>
