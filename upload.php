@@ -76,7 +76,7 @@ if(isset($_POST['submit'])){
 					header("Location: indexpage.php");
 				}
 			}
-			header("Location: indexpage.php");
+			//header("Location: indexpage.php");
 
 }
 ?>
