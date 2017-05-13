@@ -117,6 +117,8 @@ h3{font-size:1.5em;}
 .picturelist img{
 	display:block;
 	border:2px solid lightblue;
+	max-width: 190px;
+	max-height: 140px;
 }
 
 .picturelist img:hover{
