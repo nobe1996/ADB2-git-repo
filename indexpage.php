@@ -72,7 +72,7 @@ if($_SESSION['login']){
 					<li><a href="indexpage.php?logout">Logout</a></li>
                     <li><a id="bigpic" onClick="switchMenu(this.id); displayDiv('bigpicture');">big picture</a></li>
                     <li><a id="infoButton" onClick="switchMenu(this.id); displayDiv('userinfo');">user</a></li>
-					<li><a id="upload" onClick="switchMenu(this.id); displayDiv('upload');">Upload image</a></li>
+					<li><a id="uploadpic" onClick="switchMenu(this.id); displayDiv('upload');">Upload image</a></li>
                     <li><a id="pictureListButton" onClick="switchMenu(this.id); displayDiv('picturelist');">list 2</a></li>
 					
                 </ul>
