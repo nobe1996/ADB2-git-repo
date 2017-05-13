@@ -231,6 +231,13 @@ if($_SESSION['login']){
 		?>
 
 		</div>
+		<div>
+			<form action="ratePic.php" method="post">
+  				Points:
+  				<input type="range" name="rating" min="1" max="5">
+  				<input type="submit" value="ok">
+			</form>
+		</div>
 		<!--<div id="comments" class="comments">
 			<div class="comment">
 				<p class="user">
