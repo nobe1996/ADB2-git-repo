@@ -217,7 +217,7 @@ if($_SESSION['login']){
 					oci_execute($stid1);
 					
 					while ($row = oci_fetch_assoc($stid1)) { 
-						echo "<div class='comment'><p class='user'>".$row["KOMMENT_ID"] .": ".$row["FELHASZNALONEV"]."</p><p class='commentText'>".$row["KOMMENT"]."</p></div>";
+						echo "<div class='comment'><p class='user'> ".$row["FELHASZNALONEV"]."</p><p class='commentText'>".$row["KOMMENT"]."</p></div>";
 					} 
 			echo "</div>";
 			?>
