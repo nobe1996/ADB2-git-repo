@@ -219,7 +219,7 @@ if($_SESSION['login']){
 						
 						echo '<li><img src = "'. $row["URL"].'"/></li></br>';
 					} 
-					echo "</ul>"
+					echo "</ul>";
 		}
 		?>
 			<div class="comments">
