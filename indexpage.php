@@ -212,14 +212,7 @@ if($_SESSION['login']){
 		if(isset($_GET['bigname'])){
 			echo "<img src='images/".$_GET['bigname']."'/>";
 		}else{
-			$stid1 = oci_parse($conn, "SELECT URL, FELHASZNALONEV  FROM KEPEK ORDER BY URL");
-					oci_execute($stid1);
-					echo "<ul>";
-					while ($row = oci_fetch_assoc($stid1)) { 
-						
-						echo '<li><img src = "'. $row["URL"].'"/></li></br>';
-					} 
-					echo "</ul>";
+			echo "<img src='splash.jpg'>";				
 		}
 		?>
 			<div class="comments">
@@ -264,7 +257,8 @@ if($_SESSION['login']){
 		</div>
 	</div>
 <script> 
-	displayDiv(''); 
+	displayDiv('bigpicture'); 
+	switchMenu('bigPicButton');
 </script>
 <?php 
 } 
