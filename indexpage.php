@@ -148,8 +148,8 @@ if($_SESSION['login']){
 			<?php
 				include_once("upload.php");
 			?>
-			
-			<form action="upload.php" method="post">
+
+			<?--<form action="upload.php" method="post">
 				<input type="file" id="file">
 				<select>
 					<option value="" disabled="disabled" selected="selected">Location</option>
@@ -157,7 +157,7 @@ if($_SESSION['login']){
 					<option value="Budapest">Budapest</option>
 				</select>
 				<input type="submit" value="Upload">
-			</form>
+			</form>--?>
 		</div>
 
 		<div id="allTimeTop" class="allTimeTop">
