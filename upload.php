@@ -36,9 +36,8 @@ if(isset($_POST['submit'])){
 					$values = "'".$target_file."','".$_SESSION['login_name']."','".htmlspecialchars($_POST["location"])."','".htmlspecialchars($_POST["categories"])."'";
 					$stid = oci_parse($conn, 'INSERT INTO KEPEK (URL, FELHASZNALONEV, HELY_ID, KAT_NEV) VALUES ('.$values.')');
 					oci_execute($stid);
-					echo 'INSERT INTO KEPEK (URL, FELHASZNALONEV, HELY_ID, KAT_NEV) VALUES ('.$values.')';
 					$_POST = array();
-					//header("Location: indexpage.php");
+					header("Location: indexpage.php");
 				}
 			}
 
