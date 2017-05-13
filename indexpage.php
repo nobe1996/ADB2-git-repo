@@ -180,7 +180,21 @@ if($_SESSION['login']){
 		</div>
 
 		<div id="allTimeTop" class="allTimeTop">
+			<form action="topPlace.php" method="post">
+ 			<input type="submit" value="Top hely">
+			</form>
 
+			<form action="topCategory.php" method="post">
+				<input type="submit" value="Top kategória">
+			</form>
+
+			<form action="topUser.php" method="post">
+ 			<input type="submit" value="Top felhasználó">
+			</form>
+
+			<form action="topPic.php" method="post">
+				<input type="submit" value="Top kép">
+ 		</form>
 		</div>
 		
 		<div id="bigpicture" class="bigpicture">
