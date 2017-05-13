@@ -69,15 +69,15 @@ if($_SESSION['login']){
 
     <div id = "navdiv">
                     <ul class = "mainlinks">
-					<li><a href="indexpage.php?logout">Logout</a></li>
-                    <li><a id="bigpic" onClick="switchMenu(this.id); displayDiv('bigpicture');">big picture</a></li>
+                    <li><a id="bigpicButton" onClick="switchMenu(this.id); displayDiv('bigpicture');">big picture</a></li>
                     <li><a id="infoButton" onClick="switchMenu(this.id); displayDiv('userinfo');">user</a></li>
-					<li><a id="uploadpic" onClick="switchMenu(this.id); displayDiv('upload');">Upload image</a></li>
-                    <li><a id="pictureListButton" onClick="switchMenu(this.id); displayDiv('picturelist');">list 2</a></li>
-					
+                    <li><a id="pictureListButton" onClick="switchMenu(this.id); displayDiv('picturelist');">Pictures</a></li>
+					<li><a id="uploadButton" onclick="switchMenu(this.id); displayDiv('upload');">Upload</a></li>
+					<li><a id="topButton" onclick="switchMenu(this.id); displayDiv('allTimeTop');">Top Pictures</a></li>
                 </ul>
     </div>
 </div>
+
 	<div id="content">
 		<ul id= "picturelist" class="picturelist">
 
@@ -121,17 +121,47 @@ if($_SESSION['login']){
 			<li>picture<a href="#"><img src = "images/autumntree.jpg"/></a></li>
 			<li>picture<a href="#"><img src = "images/autumntree.jpg"/></a></li>
 		</ul>
-		<ul id= "userinfo" class="userinfo">
-			<p>Username: asd</p>
-			<p> pictures: 420</p>
-			<p> votes: 69</p>
-		</ul>
+
+		<div id= "userinfo" class="userinfo">
+
+			<div>
+			Username: <br />
+			Uploaded pictures: <br />
+			Votes: <br />
+			Place: <br />
+			</div>
+
+			<div class="newPlace">
+				Add a new place:
+				<form action="newPlace.php" method="post">
+						<input type="text" value="country"><br />
+						<input type="text" value="state"><br />
+						<input type="text" value="city"><br/>
+						<input type="submit" value="Add Place">
+					</form>
+			</div>
+
+		</div>
 		
 		
 		<div id= "upload" class="upload">
 			<?php
 				include_once("upload.php");
 			?>
+			
+			<form action="upload.php" method="post">
+				<input type="file" id="file">
+				<select>
+					<option value="" disabled="disabled" selected="selected">Location</option>
+					<option value="Szeged">Szeged</option>
+					<option value="Budapest">Budapest</option>
+				</select>
+				<input type="submit" value="Upload">
+			</form>
+		</div>
+
+		<div id="allTimeTop" class="allTimeTop">
+
 		</div>
 		
 		<div id="bigpicture" class="bigpicture">
