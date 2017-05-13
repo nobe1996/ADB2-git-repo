@@ -59,7 +59,9 @@ if (!isset($_SESSION['login'])){
 if($_SESSION['login']){
 	
 	echo "You have logged in as: ". $_SESSION['login_name'];
-
+	if($_SESSION['message']){
+		echo "<script type='text/javascript'>alert('Failed to upload!')</script>";
+	}
 	?>
 
 <div id ="container">

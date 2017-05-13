@@ -1,6 +1,5 @@
 <?php
 include_once('dbconnect.php');
-$message = "";
 if(isset($_POST['submit'])){
 			session_start();
 			$stmt= oci_parse($conn, "SELECT COUNT(URL) AS NUMBER_OF_PICTURES FROM KEPEK");
@@ -28,10 +27,8 @@ if(isset($_POST['submit'])){
 				$uploadOk = 0;
 			}
 			if (($uploadOk == 0) || ($_POST['location'] == '') || ($_POST['categories'] == '') ) {
-				echo "<script type='text/javascript'>alert('failed to upload!')</script>";
-				$values = "'".$target_file."','".$_SESSION['login_name']."','".htmlspecialchars($_POST["location"])."','".htmlspecialchars($_POST["categories"])."'";
-				echo 'INSERT INTO KEPEK (URL, FELHASZNALONEV, HELY_ID, KAT_NEV) VALUES ('.$values.')';
-				//header("Location: indexpage.php");
+				$_SESSION['message'] = true;
+				header("Location: indexpage.php");
 			}
 			
 			if ($uploadOk == 1 ) {
