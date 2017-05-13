@@ -19,9 +19,16 @@ if(isset($_POST['send'])){
 		trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
 	}
 
+	$stmt= oci_parse($conn, "SELECT COUNT(FELHASZNALONEV) AS NUMBER_OF_ROWS FROM FELHASZNALOK WHERE FELHASZNALONEV LIKE '" . $username ."'");
+	oci_define_by_name($stmt, 'NUMBER_OF_ROWS', $number_of_rows);
+	oci_execute($stmt);
+	oci_fetch($stmt);
+	
+	
+	
 	if ($username != "" && $jelszo != "") {
-		if (oci_num_rows($stid) == 0){
-			//$message = "A felhasználó nem létezik!";
+		if ($number_of_rows == '0'){
+			$message = "A felhasználó nem létezik!";
 		} else {
 			$row = oci_fetch_assoc($stid);		
 			if ($jelszo != $row['JELSZO']){
@@ -36,10 +43,15 @@ if(isset($_POST['send'])){
 	}
 	$_POST = array();
 	$_SESSION['login'] = true;
-	$_SESSION['login_name'] = oci_num_rows($stid);
+	$_SESSION['login_name'] = $number_of_rows;
 	header("Location: indexpage.php");
 }
 ?>
+	<?php if ($message != ""){?>
+			<p><?php echo $message;?></p>
+	<?php 
+	}
+	?>
 <div id="login" class="login">
 	<form method="post" action="indexpage.php">
 		Username:<input type="text" name="username" value=""><br>
