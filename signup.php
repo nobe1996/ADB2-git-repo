@@ -34,7 +34,7 @@ if (isset($_POST['signup'])){
 			} else if((htmlspecialchars($_POST['password']) != htmlspecialchars($_POST['passwordagain']))){
 				$message = "A jelszavaknak meg kell egyezniük!";
 			} else {
-				$values = "'".htmlspecialchars($_POST["username"])."','".htmlspecialchars($_POST["password"])."','".htmlspecialchars($_POST["nev"])."','".htmlspecialchars($_POST["groups"])."','".htmlspecialchars($_POST["hometown"])."'";
+				$values = "'".htmlspecialchars($_POST["username"])."','".htmlspecialchars($_POST["password"])."','".htmlspecialchars($_POST["nev"])."','".htmlspecialchars($_POST["hometown"])."','".htmlspecialchars($_POST["groups"])."'";
 				
 				$stid = oci_parse($conn, 'INSERT INTO FELHASZNALOK (FELHASZNALONEV, JELSZO, NEV, HELY_ID, CS_NEV) VALUES ('.$values.')');
 				oci_execute($stid);
