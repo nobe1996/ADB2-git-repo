@@ -68,14 +68,6 @@ $_POST = array();
 		</select><br>
 		<input type="submit" name="signup" value="Regisztráció">
 	</form>
-	<?php
-					$stid1 = oci_parse($conn, "SELECT HELY_ID, ORSZAG, MEGYE, TELEPULES FROM HELYEK");
-					oci_execute($stid1);
-
-					while ($row = oci_fetch_assoc($stid1)) { 
-						echo  $row["HELY_ID"]; 
-					} 
-				?>
 </div>
 </body>
 </html>
