@@ -137,7 +137,7 @@ if($_SESSION['login']){
 					while ($row = oci_fetch_assoc($stid1)) { 
 						echo '<li>'. $row["FELHASZNALONEV"] .'<a href="#"><img onclick="switchMenu("bigpic"); displayDiv("bigpicture");" src = "'. $row["URL"].'"/></a></li>';
 					} 
-					echo "<script>switchMenu(pictureListButton); displayDiv('picturelist'); </script>"
+					echo "<script>switchMenu(pictureListButton); displayDiv('picturelist'); </script>";
 					
 				}else{
 					$stid1 = oci_parse($conn, "SELECT URL, FELHASZNALONEV  FROM KEPEK");
