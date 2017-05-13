@@ -212,6 +212,7 @@ h3{font-size:1.5em;}
 
 .upload{
 	padding: 3%;
+	justify-content: space-around;
 }
 
 .upload input{
