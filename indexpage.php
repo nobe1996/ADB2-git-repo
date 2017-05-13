@@ -114,9 +114,9 @@ if($_SESSION['login']){
 					<hr />
 			</div>
 			
-			<form class="" action="" method="post">
+		<form class="" action="" method="post">
 			Felhasználó képeinek listázása:
-			<select class="" name="selectuserpic" required>
+			<select class="" name="selectuserpic">
 				<option value="" selected disabled>Válassz...</option>
 				<?php
 					$stid1 = oci_parse($conn, "SELECT FELHASZNALONEV FROM FELHASZNALOK");
@@ -130,7 +130,7 @@ if($_SESSION['login']){
 			<input type="submit" name="sendfelhasznalo" value="Lekérés" />
 		</form>
 			<?php 
-				if(isset($_POST['selectuserpic')){
+				if(isset($_POST['selectuserpic'])){
 					$stid1 = oci_parse($conn, "SELECT URL, FELHASZNALONEV  FROM KEPEK WHERE FELHASZNALONEV LIKE '". $_POST['selectuserpic') . "'");
 					oci_execute($stid1);
 					
