@@ -4,6 +4,7 @@ include_once('dbconnect.php');
 if (isset($_GET['logout'])){
 	unset($_SESSION['login']);
 	unset($_SESSION['login-name']);
+	unset($_SESSION['message']);
 }
 if (!isset($_SESSION['login'])){
 	$_SESSION['login'] = false;
@@ -58,6 +59,9 @@ if (!isset($_SESSION['login'])){
 if($_SESSION['login']){
 	
 	echo "You have logged in as: ". $_SESSION['login_name'];
+	if ($_SESSION['message'] != '') {
+		echo "<script>alert('". $_SESSION['message']."');</script>";
+	}
 	?>
 
 <div id ="container">

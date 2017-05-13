@@ -26,10 +26,9 @@ if(isset($_POST['submit'])){
 			if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" ) {
 				$uploadOk = 0;
 			}
-			
-			echo $uploadOk;
-			echo $_POST['location'];
-			echo $_POST['categories'];
+			if (($uploadOk == 0) || ($_POST['location'] == '') || ($_POST['categories'] == '') ) {
+				$_SESSION['message']) = 'Sikertelen feltöltés.';
+			}
 			
 			if (($uploadOk == 1) && ($_POST['location'] != '') && ($_POST['categories'] != '') ) {
 				if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
@@ -69,7 +68,7 @@ if(isset($_POST['submit'])){
 					oci_execute($stid1);
 					
 					while ($row = oci_fetch_assoc($stid1)) { 
-						echo '<option value="'. $row["KAT_ID"] . '">'.$row["KAT_NEV"] .'</option>'; 
+						echo '<option value="'. $row["KAT_NEV"] . '">'.$row["KAT_NEV"] .'</option>'; 
 					} 
 				?>
 			</select><br>
