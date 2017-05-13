@@ -16,7 +16,6 @@ if (!isset($_SESSION['login'])){
 <link href="main.css" rel="stylesheet" type="text/css" />
 <title>Test</title>
 <script type="text/javascript">
-
 	function switchMenu(elementId){
 		var allElements = document.getElementsByTagName("*");
 			var allIds = [];
@@ -33,7 +32,6 @@ if (!isset($_SESSION['login'])){
 		}
 		document.getElementById(elementId).className += " selected";
 	}
-
 	function displayDiv(whatToShow){
 		var bodyElements = ["picturelist", "userinfo", "upload","bigpicture", "comments"]; //add more if needed
 		for(i = 0; i < bodyElements.length; i++){
@@ -41,7 +39,6 @@ if (!isset($_SESSION['login'])){
 		}
 		document.getElementById(whatToShow).style.display = 'block';
 	}
-
 	function picFormToggle(){
 		var d = document.getElementById("picForm");
 		var b = document.getElementById("formButton");
@@ -69,6 +66,7 @@ if($_SESSION['login']){
 
     <div id = "navdiv">
                     <ul class = "mainlinks">
+					<li><a href="indexpage.php?logout">Logout</a></li>
                     <li><a id="bigpicButton" onClick="switchMenu(this.id); displayDiv('bigpicture');">big picture</a></li>
                     <li><a id="infoButton" onClick="switchMenu(this.id); displayDiv('userinfo');">user</a></li>
                     <li><a id="pictureListButton" onClick="switchMenu(this.id); displayDiv('picturelist');">Pictures</a></li>
@@ -206,7 +204,6 @@ if($_SESSION['login']){
 else{
 	include_once("login1.php");
 }
-
 oci_close($conn);
 ?>
 </body>
