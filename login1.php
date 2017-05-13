@@ -42,8 +42,6 @@ if(isset($_POST['send'])){
 		}
 	}
 	$_POST = array();
-	$_SESSION['login'] = true;
-	header("Location: indexpage.php");
 }
 ?>
 	<?php if ($message != ""){?>
