@@ -236,23 +236,6 @@ if($_SESSION['login']){
 						echo "<div class='comment'><p class='user'> ".$row["FELHASZNALONEV"]."</p><p class='commentText'>".$row["KOMMENT"]."</p></div>";
 					} 
 			echo "</div>";
-			?>
-			<form method="post" action="<?php echo "indexpage.php?bigname=".$_GET['bigname']; ?>">
-				Komment szövege:<input type="text" name="comment" value="" maxlength="100">
-				<input type="submit" name="sendcomment" value="Kommentel"/>
-			</form>
-		<?php
-			if(isset($_POST['sendcomment'])){
-					$stmt= oci_parse($conn, "SELECT COUNT(KOMMENT_ID) AS NUMBER_OF_KOMMENT FROM KOMMENT");
-					oci_define_by_name($stmt, 'NUMBER_OF_KOMMENT', $number_of_komment);
-					oci_execute($stmt);
-					oci_fetch($stmt);
-					
-					$komment_id = $number_of_komment +1;
-					$values = "'".$komment_id."','".htmlspecialchars($_POST["comment"])."','". $_SESSION['login_name']."', 'images/". $_GET['bigname'] ."'";
-					$stid = oci_parse($conn, 'INSERT INTO KOMMENT (KOMMENT_ID, KOMMENT, FELHASZNALONEV, URL) VALUES ('.$values.')');
-					oci_execute($stid);	
-			}
 			
 		}else{
 			/*$stid1 = oci_parse($conn, "SELECT URL, FELHASZNALONEV  FROM KEPEK ORDER BY URL");
