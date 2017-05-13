@@ -72,7 +72,6 @@ if($_SESSION['login']){
     <div id = "navdiv">
                     <ul class = "mainlinks">
 					<li><a href="indexpage.php?logout">Logout</a></li> 
-					<li><a id="dataplus" onClick="switchMenu(this.id); displayDiv('addDatas');">Add Data</a></li>
                     <li><a id="bigpicButton" onClick="switchMenu(this.id); displayDiv('bigpicture');">big picture</a></li>
                     <li><a id="infoButton" onClick="switchMenu(this.id); displayDiv('userinfo');">user</a></li>
                     <li><a id="pictureListButton" onClick="switchMenu(this.id); displayDiv('picturelist');">Pictures</a></li>
