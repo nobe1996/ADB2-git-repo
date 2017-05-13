@@ -211,32 +211,27 @@ if($_SESSION['login']){
 		<?php 
 		if(isset($_GET['bigname'])){
 			echo "<img src='images/".$_GET['bigname']."'/>";
+			
+			echo "<div class='comments'>";
+			echo "<div class='comment'><p class='user'>username</p><p class='commentText'>this is a comment</p></div>";
+			echo "<div class='comment'><p class='user'>username</p><p class='commentText'>this is aanother comment</p></div>";
+			echo "</div>"
+			
 		}else{
-			echo "<img src='splash.jpg'>";				
+			/*$stid1 = oci_parse($conn, "SELECT URL, FELHASZNALONEV  FROM KEPEK ORDER BY URL");
+					oci_execute($stid1);
+					echo "<ul>";
+					while ($row = oci_fetch_assoc($stid1)) { 
+						
+						echo '<li><img src = "'. $row["URL"].'"/></li></br>';
+					} 
+					echo "</ul>";*/
+					echo "<img src='splash.jpg'>";	
 		}
 		?>
-			<div class="comments">
-				<div class="comment">
-					<p class="user">
-						username
-					</p>
-					<p class="commentText">
-						this is a comment
-					</p>
-				</div>
-
-				<div class="comment">
-					<p class="user">
-						username
-					</p>
-					<p class="commentText">
-						aaaaaaaaaaaaaaaaaaaaaaaaaaaa
-					</p>
-				</div>
-			</div>
 
 		</div>
-		<div id="comments" class="comments">
+		<!--<div id="comments" class="comments">
 			<div class="comment">
 				<p class="user">
 					username
@@ -254,9 +249,9 @@ if($_SESSION['login']){
 					this<br/>is<br/>another<br/>comment
 				</p>
 			</div>
-		</div>
+		</div>-->
 	</div>
-<script> 
+<script>  
 	displayDiv('bigpicture'); 
 	switchMenu('bigPicButton');
 </script>
