@@ -249,14 +249,14 @@ if($_SESSION['login']){
 					echo "<img src='images/splash.jpg'>";	
 		}
 		?>
-		</div>
-	<div id="rate">
+		<div id="rate">
  			<form action="ratePic.php" method="post">
   				Points:
    				<input type="range" name="rating" min="1" max="5">
    				<input type="submit" value="ok">
  			</form>
  		</div>
+		</div>
 		
 		<!--<div id="comments" class="comments">
 			<div class="comment">
