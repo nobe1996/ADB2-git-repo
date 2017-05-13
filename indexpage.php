@@ -213,7 +213,7 @@ if($_SESSION['login']){
 			echo "<img src='images/".$_GET['bigname']."'/>";
 			
 			echo "<div class='comments'>";
-			$stid1 = oci_parse($conn, "SELECT KOMMENT_ID, FELHASZNALONEV, KOMMENT  FROM KOMMENT WHERE URL LIKE 'images/" .$_GET["bigname"]."' ORDER BY KOMMENT_ID");
+			$stid1 = oci_parse($conn, "SELECT FELHASZNALONEV, KOMMENT  FROM KOMMENT WHERE URL LIKE 'images/" .$_GET["bigname"]."' ORDER BY KOMMENT_ID");
 					oci_execute($stid1);
 					
 					while ($row = oci_fetch_assoc($stid1)) { 
@@ -232,7 +232,8 @@ if($_SESSION['login']){
 					oci_execute($stmt);
 					oci_fetch($stmt);
 					
-					$values = "'".($number_of_komment+1)."','".htmlspecialchars($_POST["comment"])."','". $_SESSION['login_name']."', 'images/". $_GET['bigname'] ."'";
+					$komment_id = $number_of_komment +1;
+					$values = "'".$komment_id."','".htmlspecialchars($_POST["comment"])."','". $_SESSION['login_name']."', 'images/". $_GET['bigname'] ."'";
 					$stid = oci_parse($conn, 'INSERT INTO KOMMENT (KOMMENT_ID, KOMMENT, FELHASZNALONEV, URL) VALUES ('.$values.')');
 					oci_execute($stid);	
 			}
@@ -249,15 +250,14 @@ if($_SESSION['login']){
 					echo "<img src='images/splash.jpg'>";	
 		}
 		?>
-		<div id="rate">
+		</div>
+	<div id="rate">
  			<form action="ratePic.php" method="post">
   				Points:
    				<input type="range" name="rating" min="1" max="5">
    				<input type="submit" value="ok">
  			</form>
  		</div>
-		</div>
-	
 		
 		<!--<div id="comments" class="comments">
 			<div class="comment">
