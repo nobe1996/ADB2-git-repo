@@ -11,7 +11,6 @@ session_start();
 <body>
 <?php
 include_once('dbconnect.php');
-$number_of_rows = 0;
 $message = "";
 if (isset($_POST['signup'])){
 	if (htmlspecialchars($_POST["username"]) == "" ||
@@ -21,12 +20,7 @@ if (isset($_POST['signup'])){
 			htmlspecialchars($_POST["groups"]) == "" ||
 			htmlspecialchars($_POST["hometown"]) == ""){
 		$message = "A *-al jelölt mezők kitöltése kötelező!";
-	} else if (htmlspecialchars($_POST["username"]) != "" ||
-			htmlspecialchars($_POST["nev"]) != "" ||
-			htmlspecialchars($_POST["password"]) != "" ||
-			htmlspecialchars($_POST["passwordagain"]) != "" ||
-			htmlspecialchars($_POST["groups"]) != "" ||
-			htmlspecialchars($_POST["hometown"]) != ""){
+	} else {
 		
 			$username = htmlspecialchars($_POST['username']);
 			$stmt= oci_parse($conn, "SELECT COUNT(FELHASZNALONEV) AS NUMBER_OF_ROWS FROM FELHASZNALOK WHERE FELHASZNALONEV LIKE '" . $username ."'");
@@ -34,18 +28,18 @@ if (isset($_POST['signup'])){
 			oci_execute($stmt);
 			oci_fetch($stmt);
 			if ($number_of_rows == '1'){
-			$message = "A felhasználó már létezik!";
+				$message = "A felhasználó már létezik!";
+			}else if(strlen(htmlspecialchars($_POST['password'])) < 8){
+				$message = "A jelszónak min 8 karakternek kell lennie!";
+			} else if((htmlspecialchars($_POST['password']) != htmlspecialchars($_POST['passwordagain']))){
+				$message = "A jelszavaknak meg kell egyezniük!";
+			} else {
+				/*$values = "'".htmlspecialchars($_POST["felhasz"])."','".htmlspecialchars($_POST["pass"])."','".htmlspecialchars($_POST["veznev"])."','".htmlspecialchars($_POST["kersznev"])."','".htmlspecialchars($_POST["email"])."'";
+				mysql_query("INSERT INTO `users` (`felhasz`, `jelszo`, `veznev`, `kersznev`, `email`) VALUES (".$values.");");
+				*/$_SESSION['login'] = true;
+				$_SESSION['login_name']= htmlspecialchars($_POST['username']);
+				header("Location: ./indexpage.php");
 			}
-	} else if(strlen(htmlspecialchars($_POST['password'])) < 8){
-		$message = "A jelszónak min 8 karakternek kell lennie!";
-	} else if((htmlspecialchars($_POST['password']) != htmlspecialchars($_POST['passwordagain']))){
-		$message = "A jelszavaknak meg kell egyezniük!";
-	} else if ($number_of_rows == '0'){
-		/*$values = "'".htmlspecialchars($_POST["felhasz"])."','".htmlspecialchars($_POST["pass"])."','".htmlspecialchars($_POST["veznev"])."','".htmlspecialchars($_POST["kersznev"])."','".htmlspecialchars($_POST["email"])."'";
-		mysql_query("INSERT INTO `users` (`felhasz`, `jelszo`, `veznev`, `kersznev`, `email`) VALUES (".$values.");");
-		*/$_SESSION['login'] = true;
-		$_SESSION['login_name']= htmlspecialchars($_POST['username']);
-		header("Location: ./indexpage.php");
 	}
 }
 $_POST = array();
