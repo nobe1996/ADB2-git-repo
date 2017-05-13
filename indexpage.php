@@ -113,16 +113,15 @@ if($_SESSION['login']){
 					<br />
 					<hr />
 			</div>
-
+<?php 
+			$stid1 = oci_parse($conn, "SELECT URL, FELHASZNALONEV  FROM KEPEK");
+					oci_execute($stid1);
+					
+					while ($row = oci_fetch_assoc($stid1)) { 
+						echo '<li>'. $row["FELHASZNALONEV"] .'<a href="#"><img onclick="switchMenu('bigpic'); displayDiv('bigpicture');" src = "'. $row["URL"].'"/></a></li>'
+					} 
 			<li>picture<a href="#"><img onclick="switchMenu('bigpic'); displayDiv('bigpicture');" src = "images/autumntree.jpg"/></a></li>
-
-			
-			<li>picture<a href="#"><img src = "images/autumntree.jpg"/></a></li>
-			<li>picture<a href="#"><img src = "images/autumntree.jpg"/></a></li>
-			<li>pictures<a href="#"><img src = "images/autumntree.jpg"/></a></li>
-			<li>picture<a href="#"><img src = "images/autumntree.jpg"/></a></li>
-			<li>picture<a href="#"><img src = "images/autumntree.jpg"/></a></li>
-			<li>picture<a href="#"><img src = "images/autumntree.jpg"/></a></li>
+?>
 		</ul>
 
 		<div id= "userinfo" class="userinfo">
