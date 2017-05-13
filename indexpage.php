@@ -34,7 +34,7 @@ if (!isset($_SESSION['login'])){
 		document.getElementById(elementId).className += " selected";
 	}
 	function displayDiv(whatToShow){
-		var bodyElements = ["picturelist", "userinfo", "upload","bigpicture", "comments"]; //add more if needed
+		var bodyElements = ["picturelist", "userinfo", "upload","bigpicture", "comments", "allTimeTop" ]; //add more if needed
 		for(i = 0; i < bodyElements.length; i++){
 			document.getElementById(bodyElements[i]).style.display = 'none';
 		}
@@ -178,6 +178,7 @@ if($_SESSION['login']){
 			?>
 		</div>
 
+		
 		<div id="allTimeTop" class="allTimeTop">
 			<form action="topPlace.php" method="post">
  			<input type="submit" value="Top hely">
