@@ -35,7 +35,7 @@ if (!isset($_SESSION['login'])){
 	}
 
 	function displayDiv(whatToShow){
-		var bodyElements = ["picturelist", "userinfo", "bigpicture", "comments", "upload"]; //add more if needed
+		var bodyElements = ["picturelist", "userinfo", "upload","bigpicture", "comments"]; //add more if needed
 		for(i = 0; i < bodyElements.length; i++){
 			document.getElementById(bodyElements[i]).style.display = 'none';
 		}
