@@ -48,7 +48,7 @@ if(isset($_POST['submit'])){
 			$target_file = $target_dir . $newfilename;
 			$uploadOk = 1;
 			$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
-			echo $target_file;
+			
 			if(isset($_POST["submit"])) {
 				$check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
 				if($check !== false) {
@@ -57,9 +57,7 @@ if(isset($_POST['submit'])){
 					$uploadOk = 0;
 				}
 			}
-			if (file_exists($target_file)) {
-				$uploadOk = 0;
-			}
+
 			if ($_FILES["fileToUpload"]["size"] > 50000000) {
 				$uploadOk = 0;
 			}
@@ -70,7 +68,7 @@ if(isset($_POST['submit'])){
 			if (($uploadOk == 1) && ($_POST['location'] != '') && ($_POST['categories'] != '') ) {
 				if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
 					$values = "'".$target_file."','".$_SESSION['login_name']."','".htmlspecialchars($_POST["location"])."','".htmlspecialchars($_POST["categories"])."'";
-					echo $target_file;
+					echo "siker";
 					$stid = oci_parse($conn, 'INSERT INTO KEPEK (URL, FELHASZNALONEV, HELY_ID, KAT_NEV) VALUES ('.$values.')');
 					oci_execute($stid);
 					header("Location: indexpage.php");
@@ -82,7 +80,7 @@ if(isset($_POST['submit'])){
 ?>
 
 
-	<form action="upload.php" method="post" enctype="multipart/form-data" align="center">
+	<form action="indexpage.php" method="post" enctype="multipart/form-data" align="center">
             Kép feltöltése: <input type="file" name="fileToUpload">
 			Kép készítésének helye:
 			<select name="location">
