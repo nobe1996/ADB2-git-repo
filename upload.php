@@ -48,7 +48,7 @@ if(isset($_POST['submit'])){
 			$target_file = $target_dir . $newfilename;
 			$uploadOk = 1;
 			$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
-
+			echo $target_file;
 			if(isset($_POST["submit"])) {
 				$check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
 				if($check !== false) {
@@ -75,7 +75,8 @@ if(isset($_POST['submit'])){
 					oci_execute($stid);
 					header("Location: indexpage.php");
 				}
-			} 
+			}
+			header("Location: indexpage.php");
 
 }
 ?>
