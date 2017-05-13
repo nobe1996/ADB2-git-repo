@@ -11,7 +11,7 @@ session_start();
 <body>
 <?php
 include_once('dbconnect.php');
-$number_of_rows = -1;
+$number_of_rows = 0;
 $message = "";
 if (isset($_POST['signup'])){
 	if (htmlspecialchars($_POST["username"]) == "" ||
