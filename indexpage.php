@@ -226,7 +226,7 @@ if($_SESSION['login']){
 						echo '<li><img src = "'. $row["URL"].'"/></li></br>';
 					} 
 					echo "</ul>";*/
-					echo "<img src='splash.jpg'>";	
+					echo "<img src='images/splash.jpg'>";	
 		}
 		?>
 
