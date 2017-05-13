@@ -145,6 +145,7 @@ if($_SESSION['login']){
 					
 					while ($row = oci_fetch_assoc($stid1)) { 
 						echo '<li>'. $row["FELHASZNALONEV"] .'<a href="#"><img onclick="switchMenu("bigpic"); displayDiv("bigpicture");" src = "'. $row["URL"].'"/></a></li>';
+						echo "document.onload = function() {switchMenu(pictureListButton); displayDiv('picturelist');}";
 					} 
 				}
 				
