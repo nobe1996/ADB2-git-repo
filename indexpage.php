@@ -131,7 +131,7 @@ if($_SESSION['login']){
 		</form>
 			<?php 
 				if(isset($_POST['selectuserpic'])){
-					$stid1 = oci_parse($conn, "SELECT URL, FELHASZNALONEV  FROM KEPEK WHERE FELHASZNALONEV LIKE '". $_POST['selectuserpic')] . "'");
+					$stid1 = oci_parse($conn, "SELECT URL, FELHASZNALONEV  FROM KEPEK WHERE FELHASZNALONEV LIKE '". $_POST['selectuserpic'] . "'");
 					oci_execute($stid1);
 					
 					while ($row = oci_fetch_assoc($stid1)) { 
