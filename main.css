@@ -99,6 +99,16 @@ h3{font-size:1.5em;}
 	padding-bottom: 20px;
 }
 
+.bigpicture form{
+	font-size: 110%;
+	padding: 20px;
+	display: inline-block;
+	margin-left: 3%;
+	border: 1px solid lightblue;
+	border-radius: 5px;
+	
+}
+
 .picturelist {
 	text-align:left;
 	width: 95%;
