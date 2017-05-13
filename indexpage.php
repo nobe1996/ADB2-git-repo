@@ -215,7 +215,7 @@ if($_SESSION['login']){
 			echo "<div class='comments'>";
 			echo "<div class='comment'><p class='user'>username</p><p class='commentText'>this is a comment</p></div>";
 			echo "<div class='comment'><p class='user'>username</p><p class='commentText'>this is aanother comment</p></div>";
-			echo "</div>"
+			echo "</div>";
 			
 		}else{
 			/*$stid1 = oci_parse($conn, "SELECT URL, FELHASZNALONEV  FROM KEPEK ORDER BY URL");
