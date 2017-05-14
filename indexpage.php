@@ -171,12 +171,26 @@ if($_SESSION['login']){
 			</div>
 
 			<div class="newPlace">
-				Add a new place:
+				Adj hozzá helyet:
 				<form action="newPlace.php" method="post">
 						<input type="text" value="country"><br />
 						<input type="text" value="state"><br />
 						<input type="text" value="city"><br/>
-						<input type="submit" value="Add Place">
+						<input type="submit" value="Ok">
+					</form>
+			</div>
+			<div class="newCategory">
+				Adj hozzá kategóriát:
+				<form action="newCategory.php" method="post">
+						<input type="text" value="category"><br />
+						<input type="submit" value="Ok">
+					</form>
+			</div>
+			<div class="newGroup">
+				Adj hozzá csoportot:
+				<form action="newGroup.php" method="post">
+						<input type="text" value="group"><br />
+						<input type="submit" value="Ok">
 					</form>
 			</div>
 
