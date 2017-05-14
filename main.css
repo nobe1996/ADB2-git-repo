@@ -20,6 +20,12 @@ button{
 	padding: 5px;
 }
 
+input{
+	border-radius: 5px;
+	margin: 5px;
+	padding: 5px;
+}
+
 #container{
 	margin: 10px auto 0 auto;
 	width: 90%;
