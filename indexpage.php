@@ -63,6 +63,7 @@ if($_SESSION['login']){
 		echo "<script type='text/javascript'>alert('Failed to upload!')</script>";
 		unset($_SESSION['message']);
 	}
+	echo "test";
 	?>
 
 <div id ="container">
