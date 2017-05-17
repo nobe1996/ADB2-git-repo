@@ -208,8 +208,9 @@ if($_SESSION['login']){
 			
             <?php
             if(isset($_POST['hely'])){
-                $str = "'" . $_POST['id0']. "',''" . $_POST['orszag'] . "',''" . $_POST['megye'] . "',''" . $_POST['varos'] . "'";
-                $stid = oci_parse($conn, 'INSERT INTO HELYEK (HELY_ID, ORSZAG, MEGYE, TELEPULES) VALUES (' . $str . ')');
+                $str = "'" . $_POST['id0']. "','" . $_POST['orszag'] . "','" . $_POST['megye'] . "','" . $_POST['varos'] . "'";
+                echo $str;
+		$stid = oci_parse($conn, "INSERT INTO HELYEK (HELY_ID, ORSZAG, MEGYE, TELEPULES) VALUES (" . $str . ")");
                 oci_execute($stid);
 		
             }else if(isset($_POST['kategoria'])){
