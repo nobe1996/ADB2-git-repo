@@ -41,7 +41,7 @@ if (isset($_POST['signup'])){
 				
 				$_SESSION['login'] = true;
 				$_SESSION['login_name']= htmlspecialchars($_POST['username']);
-				header("Location: ./indexpage.php");
+				header("Location: ./index.php");
 			}
 	}
 }

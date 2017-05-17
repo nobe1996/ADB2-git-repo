@@ -28,7 +28,7 @@ if(isset($_POST['submit'])){
 			}
 			if (($uploadOk == 0) || ($_POST['location'] == '') || ($_POST['categories'] == '') ) {
 				$_SESSION['message'] = true;
-				header("Location: indexpage.php");
+				header("Location: index.php");
 			}
 			
 			if (($uploadOk == 1 )&& ($_POST['location'] != '') && ($_POST['categories'] != '')) {
@@ -37,7 +37,7 @@ if(isset($_POST['submit'])){
 					$stid = oci_parse($conn, 'INSERT INTO KEPEK (URL, FELHASZNALONEV, HELY_ID, KAT_NEV) VALUES ('.$values.')');
 					oci_execute($stid);
 					$_POST = array();
-					header("Location: indexpage.php");
+					header("Location: index.php");
 				}
 			}
 

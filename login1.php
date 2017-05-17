@@ -37,7 +37,7 @@ if(isset($_POST['send'])){
 				$_SESSION['login'] = true;
 				$_SESSION['login_name'] = $row['FELHASZNALONEV'];
 				$_POST = array();
-				header("Location: indexpage.php");
+				header("Location: index.php");
 			}
 		}
 	}
@@ -50,7 +50,7 @@ if(isset($_POST['send'])){
 	<?php 
 	}
 	?>
-	<form method="post" action="indexpage.php">
+	<form method="post" action="index.php">
 		Username:<input type="text" name="username" value="" maxlength="20"><br>
 		Password:<input type="password" name="password" value="" maxlength="20"><br>
 		<input type="submit" name="send" value="Bejelentkezés"/>
