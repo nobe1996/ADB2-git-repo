@@ -317,7 +317,7 @@ if($_SESSION['login']){
 					$stid = oci_parse($conn, 'INSERT INTO KOMMENT (KOMMENT_ID, KOMMENT, FELHASZNALONEV, URL) VALUES ('.$values.')');
 					oci_execute($stid);	
 					echo "<div id='nav'>bigpicture</div>";
-					unset($_POST['sendcomment']));
+					unset($_POST['sendcomment']);
 			}
 			echo "<div id='nav'>bigpicture</div>";
 			echo "<div class='comments'>";
@@ -349,7 +349,7 @@ if($_SESSION['login']){
 						
 					}
 					echo "<div id='nav'>bigpicture</div>";
-					unset($_POST['sendrating']));
+					unset($_POST['sendrating']);
 		}
 			
 			
