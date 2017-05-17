@@ -244,12 +244,12 @@ h3{font-size:1.5em;}
 	border: 1px solid lightblue;
 }
 
-.allTimeTop{
-	display: inline-block;
+.allTimeTop div{
+	float: left;
 }
 
-.allTimeTop div{
-	width: 50%;
+.allTimeTop{
+	display: inline-block;
 }
 
 .upload input, .upload option, .upload select, .upload input.file{
