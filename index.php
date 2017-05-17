@@ -241,7 +241,7 @@ if($_SESSION['login']){
 					echo "A legtöbb képpel rendelkező felhasználó: " . $row['FELHASZNALONEV']. ", és " . $row['DARAB']. " darab képpel rendelkezik.";
 					echo "<br>";
 			}
-		
+		echo "<div>";
 		$stid = oci_parse($conn, "SELECT KAT_NEV, COUNT(KAT_NEV) AS DARAB FROM KEPEK GROUP BY KAT_NEV");
 					oci_execute($stid);
 					echo "<br><table border='1'>";
@@ -258,7 +258,7 @@ if($_SESSION['login']){
 					
 					echo "</table>";
 					
-					echo "<div id='nav'>allTimeTop</div>";
+					echo "/div>";
 		?>
 		</div>
 		
