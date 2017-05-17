@@ -226,16 +226,17 @@ h3{font-size:1.5em;}
 	border: 1px solid lightblue;
 }
 
+.upload form{
+	float: right;
+	padding: 10px;
+	border-radius: 10px;
+	border: 1px solid lightblue;
+}
+
 .picForm{
 	padding-top: 10px;
 	margin-left: 5%;
 	display: none;
-}
-
-.upload{
-	padding: 3%;
-	width: auto;
-	margin: 0 auto;
 }
 
 .upload input{
