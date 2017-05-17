@@ -1,33 +1,3 @@
-
-Skip to content
-This repository
-
-    Pull requests
-    Issues
-    Gist
-
-    @RazorSh4rk
-
-3
-0
-
-    0
-
-RazorSh4rk/ADB2-git-repo
-Code
-Issues 0
-Pull requests 0
-Projects 0
-Wiki
-Pulse
-Graphs
-Settings
-ADB2-git-repo/index.php
-d50d6de a minute ago
-@RazorSh4rk RazorSh4rk Update index.php
-@nobe1996
-@RazorSh4rk
-363 lines (319 sloc) 11.4 KB
 <?php
 session_start();
 include_once('dbconnect.php');
@@ -390,8 +360,3 @@ oci_close($conn);
 ?>
 </body>
 </html>
-
-    Contact GitHub API Training Shop Blog About 
-
-    © 2017 GitHub, Inc. Terms Privacy Security Status Help 
-
