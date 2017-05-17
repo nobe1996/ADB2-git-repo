@@ -135,6 +135,7 @@ if($_SESSION['login']){
 						$imag = explode("/", $row["URL"]);
 						echo '<li>'. $row["FELHASZNALONEV"] .' '. $row["KAT_NEV"] .'<a href="index.php?bigname='.$imag[1] .'"><img onclick="switchMenu("bigpic"); displayDiv("bigpicture");" src = "'. $row["URL"].'"/></a></li>';
 					} 
+					echo "<div id='nav'>picturelist</div>";
 					
 				}else if(isset($_POST['selectlocationpic'])){
 					$stid1 = oci_parse($conn, "SELECT URL, FELHASZNALONEV, KAT_NEV, HELY_ID  FROM KEPEK WHERE HELY_ID LIKE '". $_POST['selectlocationpic'] . "' ORDER BY URL");
@@ -144,7 +145,7 @@ if($_SESSION['login']){
 						$imag = explode("/", $row["URL"]);
 						echo '<li>'. $row["FELHASZNALONEV"] .' '. $row["KAT_NEV"] .'<a href="index.php?bigname='.$imag[1] .'"><img onclick="switchMenu("bigpic"); displayDiv("bigpicture");" src = "'. $row["URL"].'"/></a></li>';
 					} 
-					
+					echo "<div id='nav'>picturelist</div>";
 				}
 				else{
 					$stid1 = oci_parse($conn, "SELECT URL, FELHASZNALONEV, KAT_NEV  FROM KEPEK ORDER BY URL");
@@ -154,8 +155,11 @@ if($_SESSION['login']){
 						$imag = explode("/", $row["URL"]);
 						echo '<li>'. $row["FELHASZNALONEV"] .' '. $row["KAT_NEV"] .'<a href="index.php?bigname='.$imag[1] .'"><img onclick="switchMenu("bigpic"); displayDiv("bigpicture");" src = "'. $row["URL"].'"/></a></li>';
 					} 
+					echo "<div id='nav'>picturelist</div>";
 				}
-				echo "<div id='nav'>picturelist</div>";
+				
+				
+				
 				//echo "<script>switchMenu(pictureListButton); displayDiv('picturelist'); </script>";
 			?>
 		</ul>
@@ -217,9 +221,8 @@ if($_SESSION['login']){
 
 		
 		<div id="allTimeTop" class="allTimeTop">
-			<div id="forms">
 			<form action="topPlace.php" method="post">
- 				<input type="submit" value="Top hely">
+ 			<input type="submit" value="Top hely">
 			</form>
 
 			<form action="topCategory.php" method="post">
@@ -227,25 +230,22 @@ if($_SESSION['login']){
 			</form>
 
 			<form action="topUser.php" method="post">
- 				<input type="submit" value="Top felhasználó">
+ 			<input type="submit" value="Top felhasználó">
 			</form>
 
 			<form action="topPic.php" method="post">
 				<input type="submit" value="Top kép">
-		        </form>
-			</div>
-								    
+ 		</form>
 		
 		<?php 
-		echo "<div>";
-		$stid1 = oci_parse($conn, "SELECT * FROM (SELECT FELHASZNALONEV, COUNT(FELHASZNALONEV) AS DARAB FROM KEPEK GROUP BY FELHASZNALONEV ORDER BY DARAB DESC) WHERE rownum = 1");
-					oci_execute($stid1);
+		
+			$stid1 = oci_parse($conn, "SELECT * FROM (SELECT FELHASZNALONEV, COUNT(FELHASZNALONEV) AS DARAB FROM KEPEK GROUP BY FELHASZNALONEV ORDER BY DARAB DESC) WHERE rownum = 1");
+			oci_execute($stid1);
 			while ($row = oci_fetch_assoc($stid1)) { 
 					echo "A legtöbb képpel rendelkező felhasználó: " . $row['FELHASZNALONEV']. ", és " . $row['DARAB']. " darab képpel rendelkezik.";
 					echo "<br>";
 			}
-		echo "</div>";
-		echo "<div>";
+		
 		$stid = oci_parse($conn, "SELECT KAT_NEV, COUNT(KAT_NEV) AS DARAB FROM KEPEK GROUP BY KAT_NEV");
 					oci_execute($stid);
 					echo "<br><table border='1'>";
@@ -262,7 +262,7 @@ if($_SESSION['login']){
 					
 					echo "</table>";
 					
-					echo "</div>";
+					echo "<div id='nav'>allTimeTop</div>";
 		?>
 		</div>
 		
@@ -270,6 +270,22 @@ if($_SESSION['login']){
 		<?php 
 		if(isset($_GET['bigname'])){
 			echo "<img src='images/".$_GET['bigname']."'/>";
+			
+			$stid2 = oci_parse($conn, "SELECT FELHASZNALONEV FROM KEPEK WHERE URL LIKE 'images/". $_GET['bigname'] ."'");
+			oci_execute($stid2);
+			while ($row = oci_fetch_assoc($stid2)) { 
+					echo "Készítette: ". $row["FELHASZNALONEV"];
+			}
+			$stid2 = oci_parse($conn, "SELECT ERTEKELES FROM ERTEKELESEK WHERE URL LIKE 'images/". $_GET['bigname'] ."' AND FELHASZNALONEV LIKE '". $_SESSION["login-name"]."'");
+			oci_execute($stid2);
+			while ($row = oci_fetch_assoc($stid2)) { 
+					if($row["FELHASZNALONEV"] == ""){
+						echo "Még nem értékelted a képet";
+					}else {
+						echo "Értékelésed: ". $row["ERTEKELES"];
+					}
+			}
+			
 			?>
 			<form method="post" action="">
 				Komment szövege:<input type="text" name="comment" value="" maxlength="100">
@@ -286,6 +302,7 @@ if($_SESSION['login']){
 					$values = "'".$komment_id."','".htmlspecialchars($_POST["comment"])."','". $_SESSION['login_name']."', 'images/". $_GET['bigname'] ."'";
 					$stid = oci_parse($conn, 'INSERT INTO KOMMENT (KOMMENT_ID, KOMMENT, FELHASZNALONEV, URL) VALUES ('.$values.')');
 					oci_execute($stid);	
+					echo "<div id='nav'>bigpicture</div>";
 			}
 			echo "<div id='nav'>bigpicture</div>";
 			echo "<div class='comments'>";
@@ -296,6 +313,37 @@ if($_SESSION['login']){
 						echo "<div class='comment'><p class='user'> ".$row["FELHASZNALONEV"]."</p><p class='commentText'>".$row["KOMMENT"]."</p></div>";
 					} 
 			echo "</div>";
+			?>
+			<div id="rate">
+ 			<form action="" method="post">
+  				Points:
+   				<input type="range" name="rating" min="1" max="5">
+   				<input type="submit" value="sendrating">
+ 			</form>
+			</div>
+			<?php
+			
+				if(isset($_POST['sendrating'])){
+			
+					$stmt= oci_parse($conn, "SELECT COUNT(FELHASZNALONEV) AS NUMBER_OF_RATING FROM ERTEKELESEK WHERE FELHASZNALONEV LIKE '" . $username ."' AND URL LIKE 'images/". $_GET['bigname'] ."'");
+					oci_define_by_name($stmt, 'NUMBER_OF_RATING', $number_of_rating);
+					oci_execute($stmt);
+					oci_fetch($stmt);
+					
+					if($number_of_rating  == 0){
+						$values = "'".$_SESSION['login-name']."','images/".$_GET['bigname']."','".htmlspecialchars($_POST["rating"])."'";
+						$stid = oci_parse($conn, 'INSERT INTO ERTEKELESEK (FELHASZNALONEV, URL, ERTEKELES) VALUES ('.$values.')');
+						oci_execute($stid);
+						echo "<div id='nav'>bigpicture</div>";
+					}
+					else{
+						$stid1 = oci_parse($conn, "UPDATE ERTEKELESEK SET ERTEKELES = '". $_POST["rating"] ."' WHERE FELHASZNALONEV LIKE '". $_SESSION['login-name'] . "' AND URL LIKE '". $_POST["rating"] ."'");
+						oci_execute($stid1);
+						echo "<div id='nav'>bigpicture</div>";
+					}
+					//echo "<div id='nav'>bigpicture</div>";
+		}
+			
 			
 		}else{
 			/*$stid1 = oci_parse($conn, "SELECT URL, FELHASZNALONEV  FROM KEPEK ORDER BY URL");
@@ -309,19 +357,8 @@ if($_SESSION['login']){
 					echo "<img src='images/splash.jpg'>";	
 		}
 		?>
-		<div id="rate">
- 			<form action="ratePic.php" method="post">
-  				Points:
-   				<input type="range" name="rating" min="1" max="5">
-   				<input type="submit" value="ok">
- 			</form>
- 		</div>
 		</div>
-		
-		<?php
-		
-		//echo "<div id='nav'>bigpicture</div>";
-		?>
+	
 		<!--<div id="comments" class="comments">
 			<div class="comment">
 				<p class="user">
@@ -343,13 +380,13 @@ if($_SESSION['login']){
 	</div>
 <script> 
 	try{
-		var temp = document.getElementById('nav');
-		var nv = temp.innerHTML;
-		temp.innerHTML = '';
-		displayDiv(nv);
-	}catch(err){
-		displayDiv('bigPicture');	
-	}
+ 		var temp = document.getElementById('nav');
+ 		var nv = temp.innerHTML;
+ 		temp.innerHTML = '';
+ 		displayDiv(nv);
+ 	}catch(err){
+ 		displayDiv('bigPicture');	
+ 	}
 </script>
 <?php 
 } 
