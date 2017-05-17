@@ -219,55 +219,49 @@ if($_SESSION['login']){
 			?>
 		</div>
 
-		
 		<div id="allTimeTop" class="allTimeTop">
-			<div id="forms">
+		    <div id="forms">
 			<form action="topPlace.php" method="post">
- 				<input type="submit" value="Top hely">
+			    <input type="submit" value="Top hely">
 			</form>
 
 			<form action="topCategory.php" method="post">
-				<input type="submit" value="Top kategória">
+			    <input type="submit" value="Top kategória">
 			</form>
 
 			<form action="topUser.php" method="post">
- 				<input type="submit" value="Top felhasználó">
+			    <input type="submit" value="Top felhasználó">
 			</form>
 
 			<form action="topPic.php" method="post">
-				<input type="submit" value="Top kép">
-		        </form>
-			</div>
-								    
-		
-		<?php 
-		echo "<div>";
-		$stid1 = oci_parse($conn, "SELECT * FROM (SELECT FELHASZNALONEV, COUNT(FELHASZNALONEV) AS DARAB FROM KEPEK GROUP BY FELHASZNALONEV ORDER BY DARAB DESC) WHERE rownum = 1");
-					oci_execute($stid1);
-			while ($row = oci_fetch_assoc($stid1)) { 
-					echo "A legtöbb képpel rendelkező felhasználó: " . $row['FELHASZNALONEV']. ", és " . $row['DARAB']. " darab képpel rendelkezik.";
-					echo "<br>";
-			}
-		
-		echo "<div>";
-		$stid = oci_parse($conn, "SELECT KAT_NEV, COUNT(KAT_NEV) AS DARAB FROM KEPEK GROUP BY KAT_NEV");
-					oci_execute($stid);
-					echo "<br><table border='1'>";
-					echo '<tr>';
-						echo '<th>Kategória</th>';
-						echo '<th>Darab</th>';
-					echo '</tr>';
-					
-					while ($row = oci_fetch_assoc($stid)) { 
-						echo "<tr>";
-						echo '<td>'. $row["KAT_NEV"] . '</td><td>'.$row["DARAB"] .'</td>';
-						echo "</tr>";
-					} 
-					
-					echo "</table>";
-					
-					echo "</div>";
-		?>
+			    <input type="submit" value="Top kép">
+			</form>
+				</div>
+
+		    <?php 
+			$stid1 = oci_parse($conn, "SELECT * FROM (SELECT FELHASZNALONEV, COUNT(FELHASZNALONEV) AS DARAB FROM KEPEK GROUP BY FELHASZNALONEV ORDER BY DARAB DESC) WHERE rownum = 1");
+				    oci_execute($stid1);
+			    while ($row = oci_fetch_assoc($stid1)) { 
+				    echo "A legtöbb képpel rendelkező felhasználó: " . $row['FELHASZNALONEV']. ", és " . $row['DARAB']. " darab képpel rendelkezik.";
+			    }
+
+			echo "<div>";
+			$stid = oci_parse($conn, "SELECT KAT_NEV, COUNT(KAT_NEV) AS DARAB FROM KEPEK GROUP BY KAT_NEV");
+						oci_execute($stid);
+						echo "<table border='1'>";
+						echo '<tr>';
+							echo '<th>Kategória</th>';
+							echo '<th>Darab</th>';
+						echo '</tr>';
+
+						while ($row = oci_fetch_assoc($stid)) { 
+							echo "<tr>";
+							echo '<td>'. $row["KAT_NEV"] . '</td><td>'.$row["DARAB"] .'</td>';
+							echo "</tr>";
+						} 
+
+						echo "</table>";
+			echo "</div>";
 		</div>
 		
 		<div id="bigpicture" class="bigpicture">
