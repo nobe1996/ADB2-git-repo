@@ -106,14 +106,22 @@ if($_SESSION['login']){
 					</form>
 
 					Filter by location: 
-					<form action="filterLocation.php" method="post">
-						<select>
-							<option value="" disabled="disabled" selected="selected">Location</option>
-							<option value="Szeged">Szeged</option>
-							<option value="Budapest">Budapest</option>
-						</select>
-						<input type="submit">
+					
+					<form class="" action="" method="post">
+					<select class="" name="selectlocationpic">
+						<option value="" selected disabled>Válassz...</option>
+						<?php
+							$stid1 = oci_parse($conn, "SELECT HELY_ID, ORSZAG, MEGYE, TELEPULES FROM HELYEK");
+							oci_execute($stid1);
+					
+							while ($row = oci_fetch_assoc($stid1)) { 
+								echo '<option value="'. $row["HELY_ID"] . '">'.$row["ORSZAG"] .  ', '. $row["MEGYE"] . ', '. $row["TELEPULES"] . '</option>'; 
+							} 
+						?>
+					</select>
+					<input type="submit" name="sendlocation" value="Lekérés" />
 					</form>
+				
 					<br />
 					<hr />
 			</div>
@@ -128,13 +136,23 @@ if($_SESSION['login']){
 						echo '<li>'. $row["FELHASZNALONEV"] .' '. $row["KAT_NEV"] .'<a href="index.php?bigname='.$imag[1] .'"><img onclick="switchMenu("bigpic"); displayDiv("bigpicture");" src = "'. $row["URL"].'"/></a></li>';
 					} 
 					
-				}else{
-					$stid1 = oci_parse($conn, "SELECT URL, FELHASZNALONEV  FROM KEPEK ORDER BY URL");
+				}else if(isset($_POST['selectlocationpic'])){
+					$stid1 = oci_parse($conn, "SELECT URL, FELHASZNALONEV, KAT_NEV, HELY_ID  FROM KEPEK WHERE HELY_ID LIKE '". $_POST['selectlocationpic'] . "' ORDER BY URL");
 					oci_execute($stid1);
 					
 					while ($row = oci_fetch_assoc($stid1)) { 
 						$imag = explode("/", $row["URL"]);
-						echo '<li>'. $row["FELHASZNALONEV"] .'<a href="index.php?bigname='.$imag[1] .'"><img onclick="switchMenu("bigpic"); displayDiv("bigpicture");" src = "'. $row["URL"].'"/></a></li>';
+						echo '<li>'. $row["FELHASZNALONEV"] .' '. $row["KAT_NEV"] .'<a href="index.php?bigname='.$imag[1] .'"><img onclick="switchMenu("bigpic"); displayDiv("bigpicture");" src = "'. $row["URL"].'"/></a></li>';
+					} 
+					
+				}
+				else{
+					$stid1 = oci_parse($conn, "SELECT URL, FELHASZNALONEV, KAT_NEV  FROM KEPEK ORDER BY URL");
+					oci_execute($stid1);
+					
+					while ($row = oci_fetch_assoc($stid1)) { 
+						$imag = explode("/", $row["URL"]);
+						echo '<li>'. $row["FELHASZNALONEV"] .' '. $row["KAT_NEV"] .'<a href="index.php?bigname='.$imag[1] .'"><img onclick="switchMenu("bigpic"); displayDiv("bigpicture");" src = "'. $row["URL"].'"/></a></li>';
 					} 
 				}
 				echo "<div id='nav'>picturelist</div>";
@@ -182,6 +200,10 @@ if($_SESSION['login']){
 						<input type="submit" value="Ok">
 					</form>
 			</div>
+			
+			<?php 
+			echo "<div id='nav'>userinfo</div>";
+			?>
 
 		</div>
 		
@@ -189,12 +211,12 @@ if($_SESSION['login']){
 		<div id= "upload" class="upload">
 			<?php
 				include_once("upload.php");
+				echo "<div id='nav'>picturelist</div>";
 			?>
 		</div>
 
 		
 		<div id="allTimeTop" class="allTimeTop">
-		<div>
 			<form action="topPlace.php" method="post">
  			<input type="submit" value="Top hely">
 			</form>
@@ -209,23 +231,19 @@ if($_SESSION['login']){
 
 			<form action="topPic.php" method="post">
 				<input type="submit" value="Top kép">
- 			</form>
-		</div>
-		<div>
+ 		</form>
+		
 		<?php 
 		
 		$stid1 = oci_parse($conn, "SELECT * FROM (SELECT FELHASZNALONEV, COUNT(FELHASZNALONEV) AS DARAB FROM KEPEK GROUP BY FELHASZNALONEV ORDER BY DARAB DESC) WHERE rownum = 1");
 					oci_execute($stid1);
 			while ($row = oci_fetch_assoc($stid1)) { 
-					echo "<div>";
 					echo "A legtöbb képpel rendelkező felhasználó: " . $row['FELHASZNALONEV']. ", és " . $row['DARAB']. " darab képpel rendelkezik.";
 					echo "<br>";
-					echo "</div>";
 			}
 		
 		$stid = oci_parse($conn, "SELECT KAT_NEV, COUNT(KAT_NEV) AS DARAB FROM KEPEK GROUP BY KAT_NEV");
 					oci_execute($stid);
-					echo "<div>";
 					echo "<br><table border='1'>";
 					echo '<tr>';
 						echo '<th>Kategória</th>';
@@ -239,9 +257,9 @@ if($_SESSION['login']){
 					} 
 					
 					echo "</table>";
-					echo "</div>";
+					
+					echo "<div id='nav'>allTimeTop</div>";
 		?>
-		</div>
 		</div>
 		
 		<div id="bigpicture" class="bigpicture">
@@ -249,23 +267,10 @@ if($_SESSION['login']){
 		if(isset($_GET['bigname'])){
 			echo "<img src='images/".$_GET['bigname']."'/>";
 			?>
-			
-			<div id='container'>
-			<div>
 			<form method="post" action="">
 				Komment szövege:<input type="text" name="comment" value="" maxlength="100">
 				<input type="submit" name="sendcomment" value="Kommentel"/>
 			</form>
-			</div>
-			
-			<div id="rate">
- 			<form action="ratePic.php" method="post">
-  				Points:
-   				<input type="range" name="rating" min="1" max="5">
-   				<input type="submit" value="ok">
- 			</form>
- 			</div>
-			</div>
 		<?php
 			if(isset($_POST['sendcomment'])){
 					$stmt= oci_parse($conn, "SELECT COUNT(KOMMENT_ID) AS NUMBER_OF_KOMMENT FROM KOMMENT");
@@ -278,6 +283,7 @@ if($_SESSION['login']){
 					$stid = oci_parse($conn, 'INSERT INTO KOMMENT (KOMMENT_ID, KOMMENT, FELHASZNALONEV, URL) VALUES ('.$values.')');
 					oci_execute($stid);	
 			}
+			echo "<div id='nav'>bigpicture</div>";
 			echo "<div class='comments'>";
 			$stid1 = oci_parse($conn, "SELECT FELHASZNALONEV, KOMMENT  FROM KOMMENT WHERE URL LIKE 'images/" .$_GET["bigname"]."' ORDER BY KOMMENT_ID");
 					oci_execute($stid1);
@@ -299,9 +305,19 @@ if($_SESSION['login']){
 					echo "<img src='images/splash.jpg'>";	
 		}
 		?>
-		
+		<div id="rate">
+ 			<form action="ratePic.php" method="post">
+  				Points:
+   				<input type="range" name="rating" min="1" max="5">
+   				<input type="submit" value="ok">
+ 			</form>
+ 		</div>
 		</div>
 		
+		<?php
+		
+		echo "<div id='nav'>bigpicture</div>";
+		?>
 		<!--<div id="comments" class="comments">
 			<div class="comment">
 				<p class="user">
@@ -322,14 +338,7 @@ if($_SESSION['login']){
 		</div>-->
 	</div>
 <script> 
-	try{
-		var temp = document.getElementById('nav');
-		var nv = temp.innerHTML;
-		temp.innerHTML = '';
-		displayDiv(nv);
-	}catch(err){
-		displayDiv('bigPicture');	
-	}
+	displayDiv('bigpicture'); 
 </script>
 <?php 
 } 
