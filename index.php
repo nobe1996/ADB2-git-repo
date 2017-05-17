@@ -278,7 +278,7 @@ if($_SESSION['login']){
 			}
 			
 			
-			$stid2 = oci_parse($conn, "SELECT ERTEKELES FROM ERTEKELESEK WHERE URL LIKE 'images/". $_GET['bigname'] ."' AND FELHASZNALONEV LIKE '". $user."'");
+			$stid2 = oci_parse($conn, "SELECT ERTEKELES FELHASZNALONEV FROM ERTEKELESEK WHERE URL LIKE 'images/". $_GET['bigname'] ."' AND FELHASZNALONEV LIKE '". $user."'");
 			oci_execute($stid2);
 			while ($row = oci_fetch_assoc($stid2)) { 
 					if($row["FELHASZNALONEV"] == ""){
@@ -293,6 +293,14 @@ if($_SESSION['login']){
 				Komment szövege:<input type="text" name="comment" value="" maxlength="100">
 				<input type="submit" name="sendcomment" value="Kommentel"/>
 			</form>
+			
+			<div id="rate">
+ 			<form action="" method="post">
+  				Points:
+   				<input type="range" name="rating" min="1" max="5">
+   				<input type="submit" name="sendrating" value="OK">
+ 			</form>
+			</div>
 		<?php
 			if(isset($_POST['sendcomment'])){
 					$stmt= oci_parse($conn, "SELECT COUNT(KOMMENT_ID) AS NUMBER_OF_KOMMENT FROM KOMMENT");
@@ -315,15 +323,7 @@ if($_SESSION['login']){
 						echo "<div class='comment'><p class='user'> ".$row["FELHASZNALONEV"]."</p><p class='commentText'>".$row["KOMMENT"]."</p></div>";
 					} 
 			echo "</div>";
-			?>
-			<div id="rate">
- 			<form action="" method="post">
-  				Points:
-   				<input type="range" name="rating" min="1" max="5">
-   				<input type="submit" name="sendrating" value="OK">
- 			</form>
-			</div>
-			<?php
+			
 			
 				if(isset($_POST['sendrating'])){
 			
