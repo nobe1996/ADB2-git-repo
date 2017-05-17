@@ -183,28 +183,47 @@ if($_SESSION['login']){
 
 			<div class="newPlace">
 				Adj hozzá helyet:
-				<form action="newPlace.php" method="post">
-						<input type="text" value="country"><br />
-						<input type="text" value="state"><br />
-						<input type="text" value="city"><br/>
-						<input type="submit" value="Ok">
+				<form action="" method="post">
+                        <input type="number" name="id0" value="Iranyitoszam"><br />
+						<input type="text" name="orszag" value="Orszag"><br />
+						<input type="text" name="megye" value="Megye"><br />
+						<input type="text" name="varos" value="Varos"><br/>
+						<input type="submit" name="hely" value="Ok">
 					</form>
 			</div>
 			<div class="newCategory">
 				Adj hozzá kategóriát:
-				<form action="newCategory.php" method="post">
-						<input type="text" value="category"><br />
-						<input type="submit" value="Ok">
+				<form action="" method="post">
+						<input type="text" name="id1" value="category"><br />
+						<input type="submit" name="kategoria" value="Ok">
 					</form>
 			</div>
 			<div class="newGroup">
 				Adj hozzá csoportot:
-				<form action="newGroup.php" method="post">
-						<input type="text" value="group"><br />
-						<input type="submit" value="Ok">
+				<form action="" method="post">
+						<input type="text" name="id2" value="group"><br />
+						<input type="submit" name="csoport" value="Ok">
 					</form>
 			</div>
 			
+            <?php
+            if(isset($_POST['hely'])){
+                $str = "'" . $_POST['id0']. "," . $_POST['orszag'] . "," . $_POST['megye'] . "," . $_POST['varos'] . "'";
+                $stid = oci_parse($conn, 'INSERT INTO HELYEK (HELY_ID, ORSZAG, MEGYE, TELEPULES) VALUES (' . $str . ')');
+                oci_execute($stid);
+
+            }else if(isset($_POST['kategoria'])){
+                $str = "'" . $_POST['id1']. "'";
+                $stid = oci_parse($conn, 'INSERT INTO KATEGORIAK (KAT_NEV) VALUES (' . $str . ')');
+                oci_execute($stid);
+
+            }else if(isset($_POST['csoport'])){
+                $str = "'" . $_POST['id2']. "'";
+                $stid = oci_parse($conn, 'INSERT INTO CSOPORTOK (CS_NEV) VALUES (' . $str . ')');
+                oci_execute($stid);
+            }
+            ?>
+
 			<?php 
 			echo "<div id='nav'>userinfo</div>";
 			?>
