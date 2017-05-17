@@ -57,7 +57,7 @@ if (!isset($_SESSION['login'])){
 <body>
 <?php
 if($_SESSION['login']){
-	
+	$user = $_SESSION['login_name'];
 	echo "You have logged in as: ". $_SESSION['login_name'];
 	if(isset($_SESSION['message'])){
 		echo "<script type='text/javascript'>alert('Failed to upload!')</script>";
@@ -277,7 +277,7 @@ if($_SESSION['login']){
 					echo "Készítette: ". $row["FELHASZNALONEV"];
 			}
 			
-			$user = $_SESSION['login_name'];
+			
 			$stid2 = oci_parse($conn, "SELECT ERTEKELES FROM ERTEKELESEK WHERE URL LIKE 'images/". $_GET['bigname'] ."' AND FELHASZNALONEV LIKE '". $user."'");
 			oci_execute($stid2);
 			while ($row = oci_fetch_assoc($stid2)) { 
@@ -327,13 +327,13 @@ if($_SESSION['login']){
 			
 				if(isset($_POST['sendrating'])){
 			
-					$stmt= oci_parse($conn, "SELECT COUNT(FELHASZNALONEV) AS NUMBER_OF_RATING FROM ERTEKELESEK WHERE FELHASZNALONEV LIKE '" . $username ."' AND URL LIKE 'images/". $_GET['bigname'] ."'");
+					$stmt= oci_parse($conn, "SELECT COUNT(FELHASZNALONEV) AS NUMBER_OF_RATING FROM ERTEKELESEK WHERE FELHASZNALONEV LIKE '" . $user ."' AND URL LIKE 'images/". $_GET['bigname'] ."'");
 					oci_define_by_name($stmt, 'NUMBER_OF_RATING', $number_of_rating);
 					oci_execute($stmt);
 					oci_fetch($stmt);
 					
 					if($number_of_rating  == 0){
-						$values = "'".$_SESSION['login-name']."','images/".$_GET['bigname']."','".htmlspecialchars($_POST["rating"])."'";
+						$values = "'". $user."','images/".$_GET['bigname']."','".htmlspecialchars($_POST["rating"])."'";
 						$stid = oci_parse($conn, 'INSERT INTO ERTEKELESEK (FELHASZNALONEV, URL, ERTEKELES) VALUES ('.$values.')');
 						oci_execute($stid);
 						echo "<div id='nav'>bigpicture</div>";
