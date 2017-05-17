@@ -258,6 +258,14 @@ if($_SESSION['login']){
 				Komment szövege:<input type="text" name="comment" value="" maxlength="100">
 				<input type="submit" name="sendcomment" value="Kommentel"/>
 			</form>
+			
+			<div id="rate">
+ 			<form action="ratePic.php" method="post">
+  				Points:
+   				<input type="range" name="rating" min="1" max="5">
+   				<input type="submit" value="ok">
+ 			</form>
+ 			</div>
 		<?php
 			if(isset($_POST['sendcomment'])){
 					$stmt= oci_parse($conn, "SELECT COUNT(KOMMENT_ID) AS NUMBER_OF_KOMMENT FROM KOMMENT");
@@ -291,13 +299,7 @@ if($_SESSION['login']){
 					echo "<img src='images/splash.jpg'>";	
 		}
 		?>
-		<div id="rate">
- 			<form action="ratePic.php" method="post">
-  				Points:
-   				<input type="range" name="rating" min="1" max="5">
-   				<input type="submit" value="ok">
- 			</form>
- 		</div>
+		
 		</div>
 		
 		<!--<div id="comments" class="comments">
