@@ -241,16 +241,35 @@ if($_SESSION['login']){
 
 		
 		<div id="allTimeTop" class="allTimeTop">
+			<script>
+				var kat="topkat"; var felh="topfelh"; var hely="tophely";
+
+				function sw(show){
+					document.getElementById(show).style.display = 'block';
+					if(show == kat){
+						document.getElementById(felh).style.display = 'none';
+						document.getElementById(hely).style.display = 'none';
+					}else if(show == felh){
+						document.getElementById(kat).style.display = 'none';
+						document.getElementById(hely).style.display = 'none';
+					}else if(show == hely){
+						document.getElementById(felh).style.display = 'none';
+						document.getElementById(kat).style.display = 'none';
+					}
+				}
+
+			</script>
+		
 			<form action="topPlace.php" method="post">
- 			<input type="submit" value="Top hely">
+ 			<input type="submit" value="Top hely" onclick='sw(tophely)'>
 			</form>
 
 			<form action="topCategory.php" method="post">
-				<input type="submit" value="Top kategória">
+				<input type="submit" value="Top kategória" onclick='sw(topkat)'>
 			</form>
 
 			<form action="topUser.php" method="post">
- 			<input type="submit" value="Top felhasználó">
+ 			<input type="submit" value="Top felhasználó" onclick='sw(topfelh)'>
 			</form>
 		
 		<?php 
