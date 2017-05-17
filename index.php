@@ -325,6 +325,10 @@ if($_SESSION['login']){
 					
 					echo "<div id='nav'>allTimeTop</div>";
 		?>
+			
+			<script>
+				sw('');
+			</script>
 		</div>
 		
 		<div id="bigpicture" class="bigpicture">
