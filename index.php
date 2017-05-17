@@ -278,7 +278,7 @@ if($_SESSION['login']){
 			}
 			
 			
-			$stid2 = oci_parse($conn, "SELECT ERTEKELES FELHASZNALONEV FROM ERTEKELESEK WHERE URL LIKE 'images/". $_GET['bigname'] ."' AND FELHASZNALONEV LIKE '". $user."'");
+			$stid2 = oci_parse($conn, "SELECT ERTEKELES, FELHASZNALONEV FROM ERTEKELESEK WHERE URL LIKE 'images/". $_GET['bigname'] ."' AND FELHASZNALONEV LIKE '". $user."'");
 			oci_execute($stid2);
 			while ($row = oci_fetch_assoc($stid2)) { 
 					if($row["FELHASZNALONEV"] == ""){
