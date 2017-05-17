@@ -276,7 +276,7 @@ if($_SESSION['login']){
 			while ($row = oci_fetch_assoc($stid2)) { 
 					echo "Készítette: ". $row["FELHASZNALONEV"];
 			}
-			$stid2 = oci_parse($conn, "SELECT ERTEKELES FROM ERTEKELESEK WHERE URL LIKE 'images/". $_GET['bigname'] ."' AND FELHASZNALONEV LIKE '". $_SESSION["login-name"]."'");
+			$stid2 = oci_parse($conn, "SELECT ERTEKELES FROM ERTEKELESEK WHERE URL LIKE 'images/". $_GET['bigname'] ."' AND FELHASZNALONEV LIKE '". $_SESSION['login-name']."'");
 			oci_execute($stid2);
 			while ($row = oci_fetch_assoc($stid2)) { 
 					if($row["FELHASZNALONEV"] == ""){
