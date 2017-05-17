@@ -320,10 +320,14 @@ if($_SESSION['login']){
 		</div>-->
 	</div>
 <script> 
-	var temp = document.getElementById('nav');
-	var nv = temp.innerHTML;
-	temp.innerHTML = '';
-	displayDiv(nv);
+	try{
+		var temp = document.getElementById('nav');
+		var nv = temp.innerHTML;
+		temp.innerHTML = '';
+		displayDiv(nv);
+	}catch(err){
+		displayDiv('bigPicture');	
+	}
 </script>
 <?php 
 } 
