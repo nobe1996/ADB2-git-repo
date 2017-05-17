@@ -115,18 +115,6 @@ if($_SESSION['login']){
 						<input type="submit">
 					</form>
 					<br />
-					Filter by rating:
-					<form action="filterRating.php" method="post">
-						<select>
-							<option value="5" disabled="disabled" selected="selected">5 stars</option>
-							<option value="4">4 stars</option>
-							<option value="3">3 stars</option>
-							<option value="2">2 stars</option>
-							<option value="1">1 stars</option>
-						</select>
-						<input type="submit">
-					</form>
-					<br />
 					<hr />
 			</div>
 			
