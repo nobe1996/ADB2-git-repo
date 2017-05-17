@@ -258,7 +258,7 @@ if($_SESSION['login']){
 					
 					echo "</table>";
 					
-					echo "/div>";
+					echo "</div>";
 		?>
 		</div>
 		
