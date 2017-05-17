@@ -260,17 +260,11 @@ if($_SESSION['login']){
 
 			</script>
 		
-			<form action="topPlace.php" method="post">
- 			<input type="submit" value="Top hely" onclick='sw(tophely)'>
-			</form>
+			<button value="Top hely" onclick='sw(tophely)'></button>
 
-			<form action="topCategory.php" method="post">
-				<input type="submit" value="Top kategória" onclick='sw(topkat)'>
-			</form>
+			<button value="Top kategória" onclick='sw(topkat)'></button>
 
-			<form action="topUser.php" method="post">
- 			<input type="submit" value="Top felhasználó" onclick='sw(topfelh)'>
-			</form>
+ 			<button type="submit" value="Top felhasználó" onclick='sw(topfelh)'></button>
 		
 		<?php 
 		
