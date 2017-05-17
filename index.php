@@ -316,7 +316,7 @@ if($_SESSION['login']){
 		
 		<?php
 		
-		echo "<div id='nav'>bigpicture</div>";
+		//echo "<div id='nav'>bigpicture</div>";
 		?>
 		<!--<div id="comments" class="comments">
 			<div class="comment">
@@ -338,7 +338,14 @@ if($_SESSION['login']){
 		</div>-->
 	</div>
 <script> 
-	displayDiv('bigpicture'); 
+	try{
+		var temp = document.getElementById('nav');
+		var nv = temp.innerHTML;
+		temp.innerHTML = '';
+		displayDiv(nv);
+	}catch(err){
+		displayDiv('bigPicture');	
+	}
 </script>
 <?php 
 } 
