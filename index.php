@@ -144,6 +144,7 @@ if($_SESSION['login']){
 					while ($row = oci_fetch_assoc($stid1)) { 
 						$imag = explode("/", $row["URL"]);
 						echo "<li>". $row["FELHASZNALONEV"] ." ". $row["KAT_NEV"] ."<a href='index.php?bigname=".$imag[1] ."'><img onclick='switchMenu('bigpic'); displayDiv('bigpicture');' src = '". $row["URL"]."'/></a></li>";
+					}
 					echo "<div id='nav'>picturelist</div>";
 				}
 				else{
