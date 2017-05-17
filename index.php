@@ -266,8 +266,9 @@ if($_SESSION['login']){
 					echo "<br>";
 			}
 		
-		$stid = oci_parse($conn, "SELECT KAT_NEV, COUNT(KAT_NEV) AS DARAB FROM KEPEK GROUP BY KAT_NEV");
+		$stid = oci_parse($conn, "SELECT KAT_NEV, COUNT(KAT_NEV) AS DARAB FROM KEPEK GROUP BY KAT_NEV ORDER BY COUNT(KAT_NEV)");
 					oci_execute($stid);
+					echo "<div id='topkat'>";
 					echo "<br><table border='1'>";
 					echo '<tr>';
 						echo '<th>Kategória</th>';
@@ -281,6 +282,45 @@ if($_SESSION['login']){
 					} 
 					
 					echo "</table>";
+					echo "</div>";
+
+				$stid = oci_parse($conn, "SELECT FELHASZNALONEV, COUNT(FELHASZNALONEV) AS DARAB FROM KEPEK GROUP BY FELHASZNALONEV ORDER BY COUNT(FELHASZNALONEV)");
+					oci_execute($stid);
+					echo "<div id='topfelh'>";
+					echo "<br><table border='1'>";
+					echo '<tr>';
+						echo '<th>Felhasználó</th>';
+						echo '<th>Darab</th>';
+					echo '</tr>';
+					
+					while ($row = oci_fetch_assoc($stid)) { 
+						echo "<tr>";
+						echo '<td>'. $row["FELHASZNALONEV"] . '</td><td>'.$row["DARAB"] .'</td>';
+						echo "</tr>";
+					} 
+
+					
+					echo "</table>";
+					echo "</div>";
+
+				$stid = oci_parse($conn, "SELECT HELY_ID, COUNT(HELY_ID) AS DARAB FROM KEPEK GROUP BY HELY_ID ORDER BY COUNT(HELY_ID)");
+					oci_execute($stid);
+					echo "<div id='tophely'>";
+					echo "<br><table border='1'>";
+					echo '<tr>';
+						echo '<th>Hely</th>';
+						echo '<th>Darab</th>';
+					echo '</tr>';
+					
+					while ($row = oci_fetch_assoc($stid)) { 
+						echo "<tr>";
+						echo '<td>'. $row["HELY_ID"] . '</td><td>'.$row["DARAB"] .'</td>';
+						echo "</tr>";
+					} 
+
+					
+					echo "</table>";
+					echo "</div>";
 					
 					echo "<div id='nav'>allTimeTop</div>";
 		?>
