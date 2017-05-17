@@ -282,9 +282,13 @@ if($_SESSION['login']){
 			oci_execute($stid2);
 			while ($row = oci_fetch_assoc($stid2)) { 
 					if($row["FELHASZNALONEV"] == ""){
+						echo "<br>";
 						echo "Még nem értékelted a képet";
+						echo "<br>";
 					}else {
+						echo "<br>";
 						echo "Értékelésed: ". $row["ERTEKELES"];
+						echo "<br>";
 					}
 			}
 			
@@ -332,18 +336,18 @@ if($_SESSION['login']){
 					oci_execute($stmt);
 					oci_fetch($stmt);
 					
-					if($number_of_rating  == 0){
+					if($number_of_rating  == '0'){
 						$values = "'". $user."','images/".$_GET['bigname']."','".htmlspecialchars($_POST["rating"])."'";
 						$stid = oci_parse($conn, 'INSERT INTO ERTEKELESEK (FELHASZNALONEV, URL, ERTEKELES) VALUES ('.$values.')');
 						oci_execute($stid);
-						echo "<div id='nav'>bigpicture</div>";
+						
 					}
 					else{
-						$stid1 = oci_parse($conn, "UPDATE ERTEKELESEK SET ERTEKELES = '". $_POST["rating"] ."' WHERE FELHASZNALONEV LIKE '". $_SESSION['login-name'] . "' AND URL LIKE '". $_POST["rating"] ."'");
+						$stid1 = oci_parse($conn, "UPDATE ERTEKELESEK SET ERTEKELES = '". $_POST['rating'] ."' WHERE FELHASZNALONEV LIKE '". $_SESSION['login-name'] . "' AND URL LIKE 'images/". $_GET['bigname'] ."'");
 						oci_execute($stid1);
-						echo "<div id='nav'>bigpicture</div>";
+						
 					}
-					//echo "<div id='nav'>bigpicture</div>";
+					echo "<div id='nav'>bigpicture</div>";
 		}
 			
 			
