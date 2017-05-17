@@ -121,6 +121,10 @@ h3{font-size:1.5em;}
 	
 }
 
+.bigpicture container{
+	display: inline-block;
+}
+
 .picturelist {
 	text-align:left;
 	width: 95%;
