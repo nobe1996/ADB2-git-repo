@@ -132,12 +132,12 @@ if($_SESSION['login']){
 			
 			<?php 
 				if(isset($_POST['selectuserpic'])){
-					$stid1 = oci_parse($conn, "SELECT URL, FELHASZNALONEV  FROM KEPEK WHERE FELHASZNALONEV LIKE '". $_POST['selectuserpic'] . "' ORDER BY URL");
+					$stid1 = oci_parse($conn, "SELECT URL, FELHASZNALONEV, KAT_NEV  FROM KEPEK WHERE FELHASZNALONEV LIKE '". $_POST['selectuserpic'] . "' ORDER BY URL");
 					oci_execute($stid1);
 					
 					while ($row = oci_fetch_assoc($stid1)) { 
 						$imag = explode("/", $row["URL"]);
-						echo '<li>'. $row["FELHASZNALONEV"] .'<a href="indexpage.php?bigname='.$imag[1] .'"><img onclick="switchMenu("bigpic"); displayDiv("bigpicture");" src = "'. $row["URL"].'"/></a></li>';
+						echo '<li>'. $row["FELHASZNALONEV"] .' '. $row["KAT_NEV"] .'<a href="indexpage.php?bigname='.$imag[1] .'"><img onclick="switchMenu("bigpic"); displayDiv("bigpicture");" src = "'. $row["URL"].'"/></a></li>';
 					} 
 					
 				}else{
