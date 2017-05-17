@@ -257,10 +257,14 @@ if($_SESSION['login']){
 		if(isset($_GET['bigname'])){
 			echo "<img src='images/".$_GET['bigname']."'/>";
 			?>
+			
+			<div id='container'>
+			<div>
 			<form method="post" action="">
 				Komment szövege:<input type="text" name="comment" value="" maxlength="100">
 				<input type="submit" name="sendcomment" value="Kommentel"/>
 			</form>
+			</div>
 			
 			<div id="rate">
  			<form action="ratePic.php" method="post">
@@ -269,6 +273,7 @@ if($_SESSION['login']){
    				<input type="submit" value="ok">
  			</form>
  			</div>
+			</div>
 		<?php
 			if(isset($_POST['sendcomment'])){
 					$stmt= oci_parse($conn, "SELECT COUNT(KOMMENT_ID) AS NUMBER_OF_KOMMENT FROM KOMMENT");
