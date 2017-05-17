@@ -252,10 +252,6 @@ if($_SESSION['login']){
 			<form action="topUser.php" method="post">
  			<input type="submit" value="Top felhasználó">
 			</form>
-
-			<form action="topPic.php" method="post">
-				<input type="submit" value="Top kép">
- 		</form>
 		
 		<?php 
 		
