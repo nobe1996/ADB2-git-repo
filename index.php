@@ -149,6 +149,7 @@ if($_SESSION['login']){
 						echo '<li>'. $row["FELHASZNALONEV"] .'<a href="index.php?bigname='.$imag[1] .'"><img onclick="switchMenu("bigpic"); displayDiv("bigpicture");" src = "'. $row["URL"].'"/></a></li>';
 					} 
 				}
+				echo "<div id='nav'>picturelist</div>";
 				//echo "<script>switchMenu(pictureListButton); displayDiv('picturelist'); </script>";
 			?>
 		</ul>
