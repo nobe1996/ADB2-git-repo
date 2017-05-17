@@ -226,8 +226,8 @@ h3{font-size:1.5em;}
 	border: 1px solid lightblue;
 }
 
-.upload form{
-	float: right;
+.upload{
+	float: left;
 	padding: 10px;
 	border-radius: 10px;
 	border: 1px solid lightblue;
@@ -239,6 +239,6 @@ h3{font-size:1.5em;}
 	display: none;
 }
 
-.upload input{
+.upload input, .upload option, .upload select{
 	padding: 5px;
 }
