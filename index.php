@@ -262,6 +262,7 @@ if($_SESSION['login']){
 
 						echo "</table>";
 			echo "</div>";
+			?>
 		</div>
 		
 		<div id="bigpicture" class="bigpicture">
