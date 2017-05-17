@@ -248,6 +248,10 @@ h3{font-size:1.5em;}
 	display: inline-block;
 }
 
+.allTimeTop div{
+	width: 50%;
+}
+
 .upload input, .upload option, .upload select, .upload input.file{
 	padding: 5px;
 }
