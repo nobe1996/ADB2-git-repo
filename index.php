@@ -206,6 +206,7 @@ if($_SESSION['login']){
 
 		
 		<div id="allTimeTop" class="allTimeTop">
+		<div>
 			<form action="topPlace.php" method="post">
  			<input type="submit" value="Top hely">
 			</form>
@@ -220,8 +221,9 @@ if($_SESSION['login']){
 
 			<form action="topPic.php" method="post">
 				<input type="submit" value="Top kép">
- 		</form>
-		
+ 			</form>
+		</div>
+		<div>
 		<?php 
 		
 		$stid1 = oci_parse($conn, "SELECT * FROM (SELECT FELHASZNALONEV, COUNT(FELHASZNALONEV) AS DARAB FROM KEPEK GROUP BY FELHASZNALONEV ORDER BY DARAB DESC) WHERE rownum = 1");
@@ -247,6 +249,7 @@ if($_SESSION['login']){
 					
 					echo "</table>";
 		?>
+		</div>
 		</div>
 		
 		<div id="bigpicture" class="bigpicture">
