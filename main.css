@@ -67,13 +67,13 @@ input{
 #navdiv ul li a:hover
 {
 	/*background: url(navlisttabhover.png) 0 0 no-repeat ;*/
-	background: #f7f7f7;
+	background: #lightblue;
 }
 
 #navdiv ul li a.selected
 {
 	padding:30px 0 0 0;
-	background: #f7f7f7;
+	background: #lightblue;
 	display: block;
 	padding-top:10px;
 	width: 100px;
@@ -85,7 +85,7 @@ input{
 
 #content
 {
-	background-color: #f7f7f7;
+	background-color: #lightblue;
 	padding:10px 10px 10px 10px;
 	height: 95%;
 }
@@ -249,7 +249,7 @@ h3{font-size:1.5em;}
 }
 
 .allTimeTop{
-	background-color: #f7f7f7;
+	background-color: #lightblue;
 	display: inline-block;
 }
 
