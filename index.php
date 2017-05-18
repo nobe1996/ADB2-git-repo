@@ -265,7 +265,7 @@ if($_SESSION['login']){
 					echo "<br>";
 			}
 		
-		$stid = oci_parse($conn, "SELECT KAT_NEV, COUNT(KAT_NEV) AS DARAB FROM KEPEK GROUP BY KAT_NEV ORDER BY COUNT(KAT_NEV)");
+		$stid = oci_parse($conn, "SELECT KAT_NEV, COUNT(KAT_NEV) AS DARAB FROM KEPEK GROUP BY KAT_NEV ORDER BY COUNT(KAT_NEV) DESC");
 					oci_execute($stid);
 					echo "<div id='topkat'>";
 					echo "<br><table border='1'>";
@@ -283,7 +283,7 @@ if($_SESSION['login']){
 					echo "</table>";
 					echo "</div>";
 
-				$stid = oci_parse($conn, "SELECT FELHASZNALONEV, COUNT(FELHASZNALONEV) AS DARAB FROM KEPEK GROUP BY FELHASZNALONEV ORDER BY COUNT(FELHASZNALONEV)");
+				$stid = oci_parse($conn, "SELECT FELHASZNALONEV, COUNT(FELHASZNALONEV) AS DARAB FROM KEPEK GROUP BY FELHASZNALONEV ORDER BY COUNT(FELHASZNALONEV) DESC");
 					oci_execute($stid);
 					echo "<div id='topfelh'>";
 					echo "<br><table border='1'>";
