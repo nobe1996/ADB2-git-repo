@@ -450,7 +450,7 @@ if($_SESSION['login']){
 		</div>-->
 	</div>
 <script> 
-	displayDiv('bigPicture');
+	displayDiv('bigpicture');
 	/*try{
  		var temp = document.getElementById('nav');
  		var nv = temp.innerHTML;
