@@ -402,6 +402,8 @@ if($_SESSION['login']){
 					
 					
 					echo $number_of_rating;
+					$values = "'". $user."','images/".$_GET['bigname']."','".htmlspecialchars($_POST["rating"])."'";
+					echo $values;
 					if($number_of_rating  == 0){
 						$values = "'". $user."','images/".$_GET['bigname']."','".htmlspecialchars($_POST["rating"])."'";
 						$stid = oci_parse($conn, 'INSERT INTO ERTEKELESEK (FELHASZNALONEV, URL, ERTEKELES) VALUES ('.$values.')');
