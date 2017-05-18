@@ -302,7 +302,7 @@ if($_SESSION['login']){
 					echo "</table>";
 					echo "</div>";
 
-				$stid = oci_parse($conn, "SELECT HELY_ID, COUNT(HELY_ID) AS DARAB FROM KEPEK GROUP BY HELY_ID ORDER BY COUNT(HELY_ID)");
+				$stid = oci_parse($conn, "SELECT HELY_ID, COUNT(HELY_ID) AS DARAB FROM KEPEK GROUP BY HELY_ID ORDER BY COUNT(HELY_ID) DESC");
 					oci_execute($stid);
 					echo "<div id='tophely'>";
 					echo "<br><table border='1'>";
