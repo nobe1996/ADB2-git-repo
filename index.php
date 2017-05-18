@@ -63,7 +63,7 @@ if($_SESSION['login']){
 		echo "<script type='text/javascript'>alert('Failed to upload!')</script>";
 		unset($_SESSION['message']);
 	}
-	echo "test";
+	//echo "test";
 	?>
 
 <div id ="container">
@@ -177,8 +177,6 @@ if($_SESSION['login']){
 			echo $number_of_pictures;
 			?>
 			<br />
-			Votes: <br />
-			Place: <br />
 			</div>
 
 			<div class="newPlace">
@@ -226,7 +224,7 @@ if($_SESSION['login']){
             ?>
 
 			<?php 
-			echo "<div id='nav'>userinfo</div>";
+			//echo "<div id='nav'>userinfo</div>";
 			?>
 
 		</div>
@@ -235,7 +233,7 @@ if($_SESSION['login']){
 		<div id= "upload" class="upload">
 			<?php
 				include_once("upload.php");
-				echo "<div id='nav'>picturelist</div>";
+				//echo "<div id='nav'>picturelist</div>";
 			?>
 		</div>
 
@@ -323,7 +321,7 @@ if($_SESSION['login']){
 					echo "</table>";
 					echo "</div>";
 					
-					echo "<div id='nav'>allTimeTop</div>";
+					//echo "<div id='nav'>allTimeTop</div>";
 		?>
 			
 			<script>
@@ -384,7 +382,7 @@ if($_SESSION['login']){
 					echo "<div id='nav'>bigpicture</div>";
 					unset($_POST['sendcomment']);
 			}
-			echo "<div id='nav'>bigpicture</div>";
+			//echo "<div id='nav'>bigpicture</div>";
 			echo "<div class='comments'>";
 			$stid1 = oci_parse($conn, "SELECT FELHASZNALONEV, KOMMENT  FROM KOMMENT WHERE URL LIKE 'images/" .$_GET["bigname"]."' ORDER BY KOMMENT_ID");
 					oci_execute($stid1);
@@ -413,7 +411,7 @@ if($_SESSION['login']){
 						oci_execute($stid1);
 						
 					}
-					echo "<div id='nav'>bigpicture</div>";
+					//echo "<div id='nav'>bigpicture</div>";
 					unset($_POST['sendrating']);
 		}
 			
