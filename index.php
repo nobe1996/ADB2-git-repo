@@ -450,15 +450,15 @@ if($_SESSION['login']){
 		</div>-->
 	</div>
 <script> 
-	displayDiv('bigpicture');
-	/*try{
+	//displayDiv('bigpicture');
+	try{
  		var temp = document.getElementById('nav');
  		var nv = temp.innerHTML;
  		temp.innerHTML = '';
  		displayDiv(nv);
  	}catch(err){
- 		displayDiv('bigPicture');	
- 	}*/
+ 		displayDiv('bigpicture');	
+ 	}
 </script>
 <?php 
 } 
