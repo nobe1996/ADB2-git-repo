@@ -381,6 +381,7 @@ if($_SESSION['login']){
 					oci_execute($stid);	
 					echo "<div id='nav'>bigpicture</div>";
 					unset($_POST['sendcomment']);
+				echo "<div id='nav'>bigpicture</div>";
 			}
 			//echo "<div id='nav'>bigpicture</div>";
 			echo "<div class='comments'>";
