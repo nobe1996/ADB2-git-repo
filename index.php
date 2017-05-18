@@ -381,7 +381,6 @@ if($_SESSION['login']){
 					oci_execute($stid);	
 					echo "<div id='nav'>bigpicture</div>";
 					unset($_POST['sendcomment']);
-				echo "<div id='nav'>bigpicture</div>";
 			}
 			//echo "<div id='nav'>bigpicture</div>";
 			echo "<div class='comments'>";
@@ -451,14 +450,15 @@ if($_SESSION['login']){
 		</div>-->
 	</div>
 <script> 
-	try{
+	displayDiv('bigPicture');
+	/*try{
  		var temp = document.getElementById('nav');
  		var nv = temp.innerHTML;
  		temp.innerHTML = '';
  		displayDiv(nv);
  	}catch(err){
  		displayDiv('bigPicture');	
- 	}
+ 	}*/
 </script>
 <?php 
 } 
