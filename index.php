@@ -379,7 +379,7 @@ if($_SESSION['login']){
 					$values = "'".$komment_id."','".htmlspecialchars($_POST["comment"])."','". $_SESSION['login_name']."', 'images/". $_GET['bigname'] ."'";
 					$stid = oci_parse($conn, 'INSERT INTO KOMMENT (KOMMENT_ID, KOMMENT, FELHASZNALONEV, URL) VALUES ('.$values.')');
 					oci_execute($stid);	
-					echo "<div id='nav'>bigpicture</div>";
+					//echo "<div id='nav'>bigpicture</div>";
 					unset($_POST['sendcomment']);
 			}
 			//echo "<div id='nav'>bigpicture</div>";
@@ -450,15 +450,15 @@ if($_SESSION['login']){
 		</div>-->
 	</div>
 <script> 
-	//displayDiv('bigpicture');
-	try{
+	displayDiv('bigpicture');
+	/*try{
  		var temp = document.getElementById('nav');
  		var nv = temp.innerHTML;
  		temp.innerHTML = '';
  		displayDiv(nv);
  	}catch(err){
  		displayDiv('bigpicture');	
- 	}
+ 	}*/
 </script>
 <?php 
 } 
