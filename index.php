@@ -407,7 +407,7 @@ if($_SESSION['login']){
 						
 					}
 					else{
-						$stid1 = oci_parse($conn, "UPDATE ERTEKELESEK SET ERTEKELES = '". $_POST['rating'] ."' WHERE FELHASZNALONEV LIKE '". $_SESSION['login-name'] . "' AND URL LIKE 'images/". $_GET['bigname'] ."'");
+						$stid1 = oci_parse($conn, "UPDATE ERTEKELESEK SET ERTEKELES = '". $_POST['rating'] ."' WHERE FELHASZNALONEV LIKE '". $user . "' AND URL LIKE 'images/". $_GET['bigname'] ."'");
 						oci_execute($stid1);
 						
 					}
