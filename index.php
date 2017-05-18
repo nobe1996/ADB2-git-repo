@@ -15,7 +15,7 @@ if (!isset($_SESSION['login'])){
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head>
 <link href="main.css" rel="stylesheet" type="text/css" />
-<title>Test</title>
+<title>IMGBoard</title>
 <script type="text/javascript">
 	function switchMenu(elementId){
 		var allElements = document.getElementsByTagName("*");
