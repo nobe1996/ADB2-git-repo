@@ -177,6 +177,15 @@ if($_SESSION['login']){
 			echo $number_of_pictures;
 			?>
 			<br />
+			Group name:
+			<?php 
+				$stmt1= oci_parse($conn, "SELECT CS_NEV AS CSOPORT FROM FELHASZNALOK WHERE FELHASZNALONEV LIKE '".$_SESSION['login_name']."'");
+				oci_define_by_name($stmt1, 'CSOPORT', $csoport);
+				oci_execute($stmt1);
+				oci_fetch($stmt1);
+				echo $csoport;
+				?>
+				<br />
 			</div>
 
 			<div class="newPlace">
